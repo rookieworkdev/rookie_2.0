@@ -1,52 +1,50 @@
 'use client'
-import { Logo } from '@/components/logo'
-import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
 const menuItems = [
-  { name: 'Features', href: '#link' },
-  { name: 'Solution', href: '#link' },
-  { name: 'Pricing', href: '#link' },
-  { name: 'About', href: '#link' },
+  { name: 'Månadens Rookie', href: '#link' },
+  { name: 'För jobbsökande', href: '#link' },
+  { name: 'För företag', href: '#link' },
+  { name: 'Lediga jobb', href: '#link' },
+  { name: 'Om oss', href: '#link' },
+  { name: 'Inspiration', href: '#link' },
 ]
 
 export const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false)
   return (
     <header>
-      <nav
-        data-state={menuState && 'active'}
-        className="bg-background/50 fixed z-20 w-full border-b backdrop-blur-3xl"
-      >
-        <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
+      <nav data-state={menuState && 'active'} className="fixed z-20 w-full">
+        <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
               <Link href="/" aria-label="home" className="flex items-center space-x-2">
-                <Logo />
+                <span className="bg-gradient-to-r from-green-500 to-yellow-500 bg-clip-text text-2xl font-black tracking-wide text-transparent italic">
+                  ROOKIE
+                </span>
               </Link>
 
               <div className="flex items-center gap-2 lg:hidden">
-                <ThemeToggle />
-                <button
+                <Button
+                  variant="ghost"
+                  size="icon"
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
-                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5"
                 >
-                  <Menu className="m-auto size-6 duration-200 in-data-[state=active]:scale-0 in-data-[state=active]:rotate-180 in-data-[state=active]:opacity-0" />
-                  <X className="absolute inset-0 m-auto size-6 scale-0 -rotate-180 opacity-0 duration-200 in-data-[state=active]:scale-100 in-data-[state=active]:rotate-0 in-data-[state=active]:opacity-100" />
-                </button>
+                  {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
+                </Button>
               </div>
 
               <div className="hidden lg:block">
-                <ul className="flex gap-8 text-sm">
+                <ul className="flex gap-6 text-sm">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                        className="block text-white/70 duration-150 hover:text-white"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -72,17 +70,14 @@ export const HeroHeader = () => {
                 </ul>
               </div>
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit lg:items-center">
-                <div className="hidden lg:block">
-                  <ThemeToggle />
-                </div>
                 <Button asChild variant="outline" size="sm">
                   <Link href="#">
-                    <span>Login</span>
+                    <span>Contact</span>
                   </Link>
                 </Button>
                 <Button asChild size="sm">
                   <Link href="#">
-                    <span>Sign Up</span>
+                    <span>Logga in</span>
                   </Link>
                 </Button>
               </div>
