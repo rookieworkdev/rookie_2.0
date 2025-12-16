@@ -1,6 +1,7 @@
 'use client'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -16,9 +17,25 @@ const menuItems = [
 
 export const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <header>
-      <nav data-state={menuState && 'active'} className="fixed z-20 w-full">
+      <nav
+        data-state={menuState && 'active'}
+        className={cn(
+          'fixed z-20 w-full transition-all duration-300',
+          scrolled && 'bg-black/80 backdrop-blur-lg'
+        )}
+      >
         <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
@@ -43,7 +60,12 @@ export const HeroHeader = () => {
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="block text-white/70 duration-150 hover:text-white"
+                        className={cn(
+                          'block duration-150',
+                          scrolled
+                            ? 'text-muted-foreground hover:text-foreground font-medium'
+                            : 'font-medium text-white/80 hover:text-white'
+                        )}
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -53,7 +75,7 @@ export const HeroHeader = () => {
               </div>
             </div>
 
-            <div className="bg-background mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 in-data-[state=active]:block md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:in-data-[state=active]:flex dark:shadow-none dark:lg:bg-transparent">
+            <div className="bg-background mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl in-data-[state=active]:block md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:in-data-[state=active]:flex dark:shadow-none dark:lg:bg-transparent">
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
                   {menuItems.map((item, index) => (
@@ -68,15 +90,15 @@ export const HeroHeader = () => {
                   ))}
                 </ul>
               </div>
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit lg:items-center">
-                <Button asChild variant="outline" size="sm">
+              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:items-center">
+                <Button asChild variant="secondary" size="sm">
                   <Link href="#">
-                    <span>Contact</span>
+                    <span>Logga in</span>
                   </Link>
                 </Button>
                 <Button asChild size="sm">
                   <Link href="#">
-                    <span>Logga in</span>
+                    <span>Kontakta oss</span>
                   </Link>
                 </Button>
               </div>

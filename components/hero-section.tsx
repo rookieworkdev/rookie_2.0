@@ -1,6 +1,9 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
+import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { HeroHeader } from './header'
@@ -22,14 +25,19 @@ export default function HeroSection() {
             <source src="/rookie-hero-video.mp4" type="video/mp4" />
           </video>
           {/* Radial gradient overlay for the whole hero */}
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.3)_0%,_rgba(0,0,0,0.9)_100%)]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
 
           <div className="mx-auto w-full max-w-7xl px-6 py-24">
-            <div className="max-w-3xl">
-              <h1 className="mt-8 text-5xl font-medium tracking-tight text-balance md:text-6xl xl:text-7xl">
+            <motion.div
+              initial={{ opacity: 0, filter: 'blur(12px)' }}
+              animate={{ opacity: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="max-w-3xl"
+            >
+              <h1 className="mt-8 text-5xl font-medium tracking-tight text-balance text-white md:text-6xl xl:text-7xl">
                 Rookie matchar företag med talanger
               </h1>
-              <p className="mt-8 max-w-2xl text-lg">
+              <p className="mt-8 max-w-2xl text-lg text-white/80">
                 Plattformen där unga talanger matchas med spännande karriärmöjligheter.
               </p>
 
@@ -45,7 +53,7 @@ export default function HeroSection() {
                   </Link>
                 </Button>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Logo carousel */}
