@@ -26,10 +26,10 @@ export default function HeroSection() {
 
           <div className="mx-auto w-full max-w-7xl px-6 py-24">
             <div className="max-w-3xl">
-              <h1 className="mt-8 text-5xl font-medium md:text-6xl xl:text-7xl">
+              <h1 className="mt-8 text-5xl font-medium tracking-tight text-balance md:text-6xl xl:text-7xl">
                 Rookie matchar företag med talanger
               </h1>
-              <p className="mt-8 max-w-2xl text-lg text-pretty">
+              <p className="mt-8 max-w-2xl text-lg">
                 Plattformen där unga talanger matchas med spännande karriärmöjligheter.
               </p>
 

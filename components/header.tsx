@@ -1,4 +1,5 @@
 'use client'
+import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
@@ -22,9 +23,7 @@ export const HeroHeader = () => {
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
               <Link href="/" aria-label="home" className="flex items-center space-x-2">
-                <span className="bg-gradient-to-r from-green-500 to-yellow-500 bg-clip-text text-2xl font-black tracking-wide text-transparent italic">
-                  ROOKIE
-                </span>
+                <Logo />
               </Link>
 
               <div className="flex items-center gap-2 lg:hidden">
