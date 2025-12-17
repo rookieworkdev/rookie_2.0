@@ -45,7 +45,7 @@ export const HeroHeader = () => {
 
               <div className="flex items-center gap-2 lg:hidden">
                 <Button
-                  variant="ghost"
+                  variant="default"
                   size="icon"
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
@@ -63,7 +63,7 @@ export const HeroHeader = () => {
                         className={cn(
                           'block duration-150',
                           scrolled
-                            ? 'text-muted-foreground hover:text-foreground font-medium'
+                            ? 'hover:text-foreground font-medium text-white/80 hover:text-white'
                             : 'font-medium text-white/80 hover:text-white'
                         )}
                       >
@@ -90,17 +90,34 @@ export const HeroHeader = () => {
                   ))}
                 </ul>
               </div>
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:items-center">
-                <Button asChild variant="secondary" size="sm">
-                  <Link href="#">
-                    <span>Logga in</span>
-                  </Link>
-                </Button>
-                <Button asChild size="sm">
-                  <Link href="#">
-                    <span>Kontakta oss</span>
-                  </Link>
-                </Button>
+              <div className="w-full md:w-fit">
+                {/* Mobile: keep default theme styling (menu surface is light) */}
+                <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:hidden">
+                  <Button asChild variant="outline" size="sm">
+                    <Link href="#">
+                      <span>Logga in</span>
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm">
+                    <Link href="#">
+                      <span>Kontakta oss</span>
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Desktop: force “dark-mode” outline look even in light mode */}
+                <div className="dark hidden w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:flex lg:items-center">
+                  <Button asChild variant="outline" size="sm">
+                    <Link href="#">
+                      <span>Logga in</span>
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm">
+                    <Link href="#">
+                      <span>Kontakta oss</span>
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

@@ -23,7 +23,7 @@ const discoveryLinks = [
 
 export default function FooterSection() {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-muted">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-8">
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left Half - Logo and Tagline */}
@@ -48,7 +48,7 @@ export default function FooterSection() {
                   <Link
                     key={index}
                     href={link.href}
-                    className="text-white/70 transition-colors duration-150 hover:text-white"
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-150"
                   >
                     {link.title}
                   </Link>
@@ -59,7 +59,7 @@ export default function FooterSection() {
             {/* Kontakt Column */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Kontakt</h3>
-              <div className="flex flex-col space-y-3 text-white/70">
+              <div className="text-muted-foreground flex flex-col space-y-3">
                 <div>Drottninggatan 32, 8tr, 111 51 Stockholm</div>
                 <div>info@rookiework.se</div>
                 <div>010 129 60 00</div>
@@ -69,8 +69,8 @@ export default function FooterSection() {
         </div>
 
         {/* Bottom Section - Copyright and Theme Toggle */}
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-6">
-          <span className="text-sm text-white/50">
+        <div className="border-border mt-16 flex flex-wrap items-center justify-between gap-6 border-t pt-6">
+          <span className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} Rookie, All rights reserved
           </span>
           <ThemeToggle />

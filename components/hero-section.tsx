@@ -47,11 +47,13 @@ export default function HeroSection() {
                     <span className="text-nowrap">Hitta personal</span>
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="#link">
-                    <span className="text-nowrap">Hitta jobb</span>
-                  </Link>
-                </Button>
+                <div className="dark">
+                  <Button asChild size="lg" variant="outline">
+                    <Link href="#link">
+                      <span className="text-nowrap">Hitta jobb</span>
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </div>

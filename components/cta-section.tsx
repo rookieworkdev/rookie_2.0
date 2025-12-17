@@ -24,7 +24,7 @@ export default function CTASection() {
             }}
           />
           {/* Gradient overlay - solid top-left to transparent bottom-right */}
-          <div className="absolute inset-0 bg-linear-to-br from-black via-black/70 to-black/0" />
+          <div className="absolute inset-0 bg-linear-to-br from-black/80 via-black/50 to-black/0" />
 
           {/* Content */}
           <div className="relative flex flex-col justify-between gap-8 md:min-h-[200px]">
