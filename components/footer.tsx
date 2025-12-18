@@ -5,19 +5,19 @@ import Link from 'next/link'
 const discoveryLinks = [
   {
     title: 'För företag',
-    href: '#',
+    href: '/for-foretag',
   },
   {
     title: 'För jobbsökande',
-    href: '#',
+    href: '/for-jobbsokande',
   },
   {
     title: 'Om oss',
-    href: '#',
+    href: '/om-oss',
   },
   {
     title: 'Integritetspolicy',
-    href: '#',
+    href: '/integritetspolicy',
   },
 ]
 

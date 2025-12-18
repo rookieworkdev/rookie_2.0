@@ -7,12 +7,12 @@ import Link from 'next/link'
 import React from 'react'
 
 const menuItems = [
-  { name: 'Månadens Rookie', href: '#link' },
-  { name: 'För jobbsökande', href: '#link' },
-  { name: 'För företag', href: '#link' },
-  { name: 'Lediga jobb', href: '#link' },
-  { name: 'Om oss', href: '#link' },
-  { name: 'Inspiration', href: '#link' },
+  { name: 'Månadens Rookie', href: '/manadens-rookie' },
+  { name: 'För jobbsökande', href: '/for-jobbsokande' },
+  { name: 'För företag', href: '/for-foretag' },
+  { name: 'Lediga jobb', href: '/lediga-jobb' },
+  { name: 'Om oss', href: '/om-oss' },
+  { name: 'Inspiration', href: '/inspiration' },
 ]
 
 export const HeroHeader = () => {
@@ -99,7 +99,7 @@ export const HeroHeader = () => {
                     </Link>
                   </Button>
                   <Button asChild size="sm">
-                    <Link href="#">
+                    <Link href="/kontakt">
                       <span>Kontakta oss</span>
                     </Link>
                   </Button>
@@ -113,7 +113,7 @@ export const HeroHeader = () => {
                     </Link>
                   </Button>
                   <Button asChild size="sm">
-                    <Link href="#">
+                    <Link href="/kontakt">
                       <span>Kontakta oss</span>
                     </Link>
                   </Button>

@@ -39,7 +39,7 @@ export default function CTASection() {
             </div>
             <div className="self-start">
               <Button asChild size="lg">
-                <Link href="#kontakt">
+                <Link href="/kontakt">
                   <span className="text-nowrap">Kontakta oss</span>
                 </Link>
               </Button>

@@ -6,6 +6,25 @@ import HeroSection from '@/components/hero-section'
 import JobseekerSection from '@/components/jobseeker-section'
 import RookieOfMonthSection from '@/components/rookie-of-month-section'
 import TestimonialSection from '@/components/testimonial-section'
+import { DEFAULT_DESCRIPTION } from '@/lib/seo'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Vi matchar företag med unga talanger',
+  description: DEFAULT_DESCRIPTION,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    url: '/',
+    title: 'Vi matchar företag med unga talanger - Rookie',
+    description: DEFAULT_DESCRIPTION,
+  },
+  twitter: {
+    title: 'Vi matchar företag med unga talanger - Rookie',
+    description: DEFAULT_DESCRIPTION,
+  },
+}
 
 export default function Page() {
   return (

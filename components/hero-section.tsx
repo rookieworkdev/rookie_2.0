@@ -43,13 +43,13 @@ export default function HeroSection() {
 
               <div className="mt-12 flex flex-col items-start justify-start gap-4 sm:flex-row">
                 <Button asChild size="lg">
-                  <Link href="#link">
+                  <Link href="/for-foretag">
                     <span className="text-nowrap">Hitta personal</span>
                   </Link>
                 </Button>
                 <div className="dark">
                   <Button asChild size="lg" variant="outline">
-                    <Link href="#link">
+                    <Link href="/lediga-jobb">
                       <span className="text-nowrap">Hitta jobb</span>
                     </Link>
                   </Button>
