@@ -20,7 +20,7 @@ export const carouselItems: CarouselItem[] = [
   {
     type: 'card',
     title: 'Sälj',
-    color: 'bg-rose-500',
+    color: 'bg-gradient-to-br from-green-600 to-yellow-300',
   },
   {
     type: 'image',
@@ -31,7 +31,7 @@ export const carouselItems: CarouselItem[] = [
   {
     type: 'card',
     title: 'Marknad',
-    color: 'bg-yellow-500',
+    color: 'bg-gradient-to-bl from-green-600 to-yellow-300',
   },
   {
     type: 'image',
@@ -42,7 +42,7 @@ export const carouselItems: CarouselItem[] = [
   {
     type: 'card',
     title: 'Admin',
-    color: 'bg-blue-500',
+    color: 'bg-gradient-to-tr from-green-600 to-yellow-300',
   },
   {
     type: 'image',
@@ -53,6 +53,6 @@ export const carouselItems: CarouselItem[] = [
   {
     type: 'card',
     title: 'HR',
-    color: 'bg-orange-500',
+    color: 'bg-gradient-to-tl from-green-600 to-yellow-300',
   },
 ]

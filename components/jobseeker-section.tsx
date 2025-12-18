@@ -28,7 +28,7 @@ export default function JobseekerSection() {
               ladda enkelt upp ditt CV för att göra dig synlig för spännande företag.
             </p>
           </div>
-          <Button asChild size="lg" className="shrink-0">
+          <Button asChild size="lg" variant="secondary" className="shrink-0">
             <Link href="#link">
               <span className="text-nowrap">Hitta jobb</span>
             </Link>
@@ -76,8 +76,8 @@ export default function JobseekerSection() {
             ))}
           </InfiniteSlider>
           {/* Fade overlays for edges */}
-          <div className="from-background/90 via-background/50 pointer-events-none absolute inset-y-0 left-0 mx-[-24px] w-32 bg-gradient-to-r to-transparent" />
-          <div className="from-background/90 via-background/50 pointer-events-none absolute inset-y-0 right-0 mx-[-24px] w-32 bg-gradient-to-l to-transparent" />
+          <div className="from-background/80 via-background/40 via-background/10 pointer-events-none absolute inset-y-0 left-0 mx-[-24px] w-24 bg-gradient-to-r to-transparent" />
+          <div className="from-background/80 via-background/40 via-background/10 pointer-events-none absolute inset-y-0 right-0 mx-[-24px] w-24 bg-gradient-to-l to-transparent" />
         </motion.div>
       </div>
     </section>
