@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -31,8 +32,8 @@ const features = [
 
 export default function EmployerSection() {
   return (
-    <section className="border-border border-t">
-      <div className="border-border bg-muted mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper()}>
+      <div className={sectionContainer('bg-muted')}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}

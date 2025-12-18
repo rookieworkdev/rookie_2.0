@@ -9,6 +9,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
+import { horizontalPadding } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -70,7 +71,7 @@ export function PageHeader({
       {/* Border container wrapping entire section */}
       <div className="relative mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col justify-between border-r border-l border-white/10 md:min-h-[70vh]">
         {/* Breadcrumb at top */}
-        <div className="px-6 pt-24">
+        <div className={`${horizontalPadding} pt-24`}>
           {breadcrumbs && breadcrumbs.length > 0 && (
             <motion.div
               initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -104,7 +105,7 @@ export function PageHeader({
         </div>
 
         {/* Title, description, and button group at bottom */}
-        <div className="px-6 pb-12 md:pb-20">
+        <div className={`${horizontalPadding} pb-12 md:pb-20`}>
           {children ? (
             children
           ) : (

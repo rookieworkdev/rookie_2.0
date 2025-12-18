@@ -1,6 +1,7 @@
 'use client'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 
 interface QuoteAnimationSectionProps {
@@ -20,8 +21,8 @@ export default function QuoteAnimationSection({
   const words = quote.split(' ')
 
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

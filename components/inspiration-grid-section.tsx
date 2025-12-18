@@ -1,12 +1,13 @@
 import { InspirationCard } from '@/components/inspiration-card'
 import { getAllPosts } from '@/lib/inspiration'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 
 export default function InspirationGridSection() {
   const posts = getAllPosts()
 
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         {posts.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, index) => (

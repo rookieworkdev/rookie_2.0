@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { Check } from 'lucide-react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
@@ -34,8 +35,8 @@ export default function AboutSection({
   const descriptionArray = Array.isArray(description) ? description : [description]
 
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image container */}
           <motion.div

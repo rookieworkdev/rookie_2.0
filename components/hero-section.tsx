@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
+import { horizontalPadding } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import { AutolivLogo, CoopLogistikLogo, KlarnaLogo, SkandiaLogo, VolvoLogo } from './company-logos'
@@ -30,7 +31,7 @@ export default function HeroSection() {
           {/* Border container wrapping entire section */}
           <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col border-r border-l border-white/10">
             {/* Main content */}
-            <div className="flex-1 px-6 py-29.5">
+            <div className={`flex-1 ${horizontalPadding} py-29.5`}>
               <motion.div
                 initial={{ opacity: 0, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, filter: 'blur(0px)' }}

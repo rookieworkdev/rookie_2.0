@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { horizontalPadding, sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 
@@ -48,8 +49,8 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
 
   if (variant === 'double') {
     return (
-      <section className="bg-background border-border border-t">
-        <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+      <section className={sectionWrapper('bg-background')}>
+        <div className={sectionContainer()}>
           <div className="flex flex-col gap-6 lg:flex-row">
             {/* First CTA Container */}
             <motion.div
@@ -125,8 +126,8 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
 
   // Single variant (default)
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer(undefined, 'no-padding')}>
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
@@ -146,7 +147,9 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
           <div className="absolute inset-0 bg-linear-to-br from-black/80 via-black/50 to-black/0" />
 
           {/* Content */}
-          <div className="relative flex flex-col justify-between gap-8 px-6 py-20 md:min-h-[200px]">
+          <div
+            className={`relative flex flex-col justify-between gap-8 ${horizontalPadding} py-20 md:min-h-[200px]`}
+          >
             <div className="max-w-2xl">
               <h2 className="text-2xl font-medium tracking-tight text-white md:text-3xl lg:text-4xl">
                 {singleContent.title}

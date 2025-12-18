@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useState } from 'react'
@@ -51,8 +52,8 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Contact Details */}
           <motion.div

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { Battery, Laptop, Lightbulb, Rocket, Target, Users, type LucideIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
@@ -38,8 +39,8 @@ export default function BenefitsSection({
   const descriptionArray = Array.isArray(description) ? description : [description]
 
   return (
-    <section className="bg-muted border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper()}>
+      <div className={sectionContainer('bg-muted')}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}

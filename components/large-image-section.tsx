@@ -1,5 +1,6 @@
 'use client'
 
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 
@@ -19,21 +20,10 @@ export default function LargeImageSection({
   const descriptionArray = Array.isArray(description) ? description : [description]
 
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
-        {/* Full-width image on top */}
-        <motion.div
-          initial={{ opacity: 0, filter: 'blur(12px)' }}
-          whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="bg-muted relative aspect-video w-full overflow-hidden rounded-2xl"
-        >
-          <Image src={imageUrl} alt={imageAlt} fill className="object-cover" unoptimized />
-        </motion.div>
-
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         {/* Two columns below: title and text */}
-        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="mb-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Title column */}
           <motion.div
             initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -59,6 +49,16 @@ export default function LargeImageSection({
             ))}
           </motion.div>
         </div>
+        {/* Full-width image on bottom */}
+        <motion.div
+          initial={{ opacity: 0, filter: 'blur(12px)' }}
+          whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="bg-muted relative aspect-video w-full overflow-hidden rounded-2xl"
+        >
+          <Image src={imageUrl} alt={imageAlt} fill className="object-cover" unoptimized />
+        </motion.div>
       </div>
     </section>
   )

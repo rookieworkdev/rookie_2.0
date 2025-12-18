@@ -1,5 +1,6 @@
 import { Logo } from '@/components/logo'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { horizontalPadding, sectionWrapper } from '@/lib/utils'
 import Link from 'next/link'
 
 const discoveryLinks = [
@@ -23,8 +24,10 @@ const discoveryLinks = [
 
 export default function FooterSection() {
   return (
-    <footer className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 pt-16 pb-8">
+    <footer className={sectionWrapper('bg-background')}>
+      <div
+        className={`border-border mx-auto max-w-7xl border-r border-l ${horizontalPadding} pt-16 pb-8`}
+      >
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left Half - Logo and Tagline */}
           <div className="space-y-4">
@@ -60,19 +63,47 @@ export default function FooterSection() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Kontakt</h3>
               <div className="text-muted-foreground flex flex-col space-y-3">
-                <div>Drottninggatan 32, 8tr, 111 51 Stockholm</div>
-                <div>info@rookiework.se</div>
-                <div>010 129 60 00</div>
+                <a
+                  href="https://maps.google.com/?q=Drottninggatan+32,+111+51+Stockholm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors duration-150"
+                >
+                  Drottninggatan 32, 8tr, 111 51 Stockholm
+                </a>
+                <a
+                  href="mailto:info@rookiework.se"
+                  className="hover:text-foreground transition-colors duration-150"
+                >
+                  info@rookiework.se
+                </a>
+                <a
+                  href="tel:+46101296000"
+                  className="hover:text-foreground transition-colors duration-150"
+                >
+                  010 129 60 00
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section - Copyright and Theme Toggle */}
+        {/* Bottom Section - Copyright, Site by Stormfors, and Theme Toggle */}
         <div className="mt-16 flex flex-wrap items-center justify-between gap-6 pt-6">
-          <span className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Rookie, All rights reserved
-          </span>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <span className="text-muted-foreground text-sm">
+              © {new Date().getFullYear()} Rookie, All rights reserved
+            </span>
+            <span className="text-muted-foreground hidden sm:inline">•</span>
+            <a
+              href="https://stormfors.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-150"
+            >
+              Site by Stormfors
+            </a>
+          </div>
           <ThemeToggle />
         </div>
       </div>

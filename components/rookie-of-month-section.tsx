@@ -3,14 +3,15 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { GraduationCap } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 
 export default function RookieOfMonthSection() {
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Employee card - Left side */}
           <motion.div
@@ -18,11 +19,11 @@ export default function RookieOfMonthSection() {
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="flex flex-col justify-between rounded-xl bg-gradient-to-br from-green-500/20 to-yellow-300/40 p-6 shadow-xs md:p-8 dark:bg-gradient-to-br"
+            className="bg-muted flex flex-col justify-between rounded-xl p-6 shadow-xs md:p-8 dark:bg-gradient-to-br"
           >
             {/* Avatar, Name, and City grouped */}
             <div className="mb-8 flex flex-col items-center text-center">
-              <Avatar className="border-primary mb-4 size-32 md:size-32">
+              <Avatar className="mb-4 size-28 md:size-28">
                 <AvatarImage
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80"
                   alt="Björn Gabrielsson"
@@ -71,8 +72,8 @@ export default function RookieOfMonthSection() {
               Månadens Rookie!
             </p>
             <div className="mt-8">
-              <Button asChild size="lg" variant="outline">
-                <Link href="#utmarkelser">
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/manadens-rookie">
                   <span className="text-nowrap">Visa alla utmärkelser</span>
                 </Link>
               </Button>

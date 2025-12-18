@@ -3,14 +3,15 @@
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { carouselItems } from '@/lib/career-carousel-data'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function JobseekerSection() {
   return (
-    <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper('bg-background')}>
+      <div className={sectionContainer()}>
         {/* Header with text and CTA */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -42,7 +43,7 @@ export default function JobseekerSection() {
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
           className="relative mt-12"
         >
-          <InfiniteSlider speed={50} gap={16} className="mx-[-24px]">
+          <InfiniteSlider speed={50} gap={16} className="mx-[-32px]">
             {carouselItems.map((item, index) => (
               <div
                 key={index}
@@ -76,8 +77,8 @@ export default function JobseekerSection() {
             ))}
           </InfiniteSlider>
           {/* Fade overlays for edges */}
-          <div className="from-background/80 via-background/40 via-background/10 pointer-events-none absolute inset-y-0 left-0 mx-[-24px] w-24 bg-gradient-to-r to-transparent" />
-          <div className="from-background/80 via-background/40 via-background/10 pointer-events-none absolute inset-y-0 right-0 mx-[-24px] w-24 bg-gradient-to-l to-transparent" />
+          <div className="from-background/80 via-background/40 via-background/10 pointer-events-none absolute inset-y-0 left-0 mx-[-32px] w-24 bg-gradient-to-r to-transparent" />
+          <div className="from-background/80 via-background/40 via-background/10 pointer-events-none absolute inset-y-0 right-0 mx-[-32px] w-24 bg-gradient-to-l to-transparent" />
         </motion.div>
       </div>
     </section>

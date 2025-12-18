@@ -1,7 +1,7 @@
 'use client'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { cn, horizontalPadding } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -36,7 +36,7 @@ export const HeroHeader = () => {
           scrolled && 'bg-black/80 backdrop-blur-lg'
         )}
       >
-        <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
+        <div className={`mx-auto max-w-7xl ${horizontalPadding} transition-all duration-300`}>
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center justify-between gap-8 lg:w-auto">
               <Link href="/" aria-label="home" className="flex items-center space-x-2">

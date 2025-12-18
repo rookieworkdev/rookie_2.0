@@ -3,6 +3,7 @@
 import { JobCard } from '@/components/job-card'
 import { Button } from '@/components/ui/button'
 import { availableJobs } from '@/lib/jobs'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
@@ -49,8 +50,8 @@ export default function JobsCarouselSection({
   }
 
   return (
-    <section className="border-border border-t">
-      <div className="border-border bg-muted mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section className={sectionWrapper()}>
+      <div className={sectionContainer('bg-muted')}>
         {/* Section header */}
         <div className="mb-12 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <motion.div
@@ -60,7 +61,7 @@ export default function JobsCarouselSection({
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-              Lediga <em className="text-primary not-italic">tjänster</em>
+              Lediga tjänster
             </h2>
             <p className="text-muted-foreground mt-6 max-w-2xl text-pretty">
               Upptäck spännande karriärmöjligheter hos företag som söker unga talanger

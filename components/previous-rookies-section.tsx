@@ -3,13 +3,14 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { previousRookies } from '@/lib/previous-rookies'
+import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { GraduationCap } from 'lucide-react'
 import { motion } from 'motion/react'
 
 export default function PreviousRookiesSection() {
   return (
-    <section id="utmarkelser" className="border-border border-t">
-      <div className="border-border bg-muted mx-auto max-w-7xl border-r border-l px-6 py-20">
+    <section id="utmarkelser" className={sectionWrapper()}>
+      <div className={sectionContainer('bg-muted')}>
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -19,7 +20,7 @@ export default function PreviousRookiesSection() {
           className="mb-12 flex flex-col items-start text-left"
         >
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-            Tidigare <em className="text-primary not-italic">utmärkelser</em>
+            Tidigare utmärkelser
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl text-pretty">
             Här är några av de tidigare rookies som har blivit månadens mest lovande talang
@@ -39,7 +40,7 @@ export default function PreviousRookiesSection() {
             >
               {/* Avatar, Name, and City grouped */}
               <div className="mb-6 flex flex-col items-center text-center">
-                <Avatar className="border-primary mb-4 size-24 border-2 shadow">
+                <Avatar className="mb-4 size-24">
                   <AvatarImage src={rookie.imageSrc} alt={rookie.name} />
                   <AvatarFallback className="text-2xl">
                     {rookie.name
