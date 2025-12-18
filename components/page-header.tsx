@@ -67,9 +67,10 @@ export function PageHeader({
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
 
-      <div className="relative flex h-full min-h-[60vh] w-full flex-col justify-between md:min-h-[70vh]">
-        <div className="mx-auto w-full max-w-7xl px-6 pt-24">
-          {/* Breadcrumb at top */}
+      {/* Border container wrapping entire section */}
+      <div className="relative mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col justify-between border-r border-l border-white/10 md:min-h-[70vh]">
+        {/* Breadcrumb at top */}
+        <div className="px-6 pt-24">
           {breadcrumbs && breadcrumbs.length > 0 && (
             <motion.div
               initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -103,7 +104,7 @@ export function PageHeader({
         </div>
 
         {/* Title, description, and button group at bottom */}
-        <div className="mx-auto w-full max-w-7xl px-6 pb-12 md:pb-24">
+        <div className="px-6 pb-12 md:pb-24">
           {children ? (
             children
           ) : (

@@ -18,7 +18,7 @@ export default function RookieOfMonthSection() {
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="from-muted/50 to-primary/20 border-border/50 flex flex-col justify-between rounded-xl border bg-gradient-to-br p-6 shadow-xs md:p-8 dark:bg-gradient-to-br"
+            className="from-muted/50 to-primary/20 flex flex-col justify-between rounded-xl bg-gradient-to-br p-6 shadow-xs md:p-8 dark:bg-gradient-to-br"
           >
             {/* Avatar, Name, and City grouped */}
             <div className="mb-8 flex flex-col items-center text-center">
