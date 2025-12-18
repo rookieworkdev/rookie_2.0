@@ -1,6 +1,6 @@
 import { Logo } from '@/components/logo'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { horizontalPadding, sectionWrapper } from '@/lib/utils'
+import { cn, containerBorders, horizontalPadding, sectionWrapper } from '@/lib/utils'
 import Link from 'next/link'
 
 const discoveryLinks = [
@@ -25,9 +25,7 @@ const discoveryLinks = [
 export default function FooterSection() {
   return (
     <footer className={sectionWrapper('bg-background')}>
-      <div
-        className={`border-border mx-auto max-w-7xl border-r border-l ${horizontalPadding} pt-16 pb-8`}
-      >
+      <div className={cn(containerBorders(), horizontalPadding, 'pt-16 pb-8')}>
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left Half - Logo and Tagline */}
           <div className="space-y-4">

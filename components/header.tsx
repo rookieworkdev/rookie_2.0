@@ -1,7 +1,7 @@
 'use client'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
-import { cn, horizontalPadding } from '@/lib/utils'
+import { cn, horizontalPadding, whiteBorderOpacity } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -32,7 +32,9 @@ export const HeroHeader = () => {
       <nav
         data-state={menuState && 'active'}
         className={cn(
-          'fixed z-20 w-full border-b border-white/10 transition-all duration-300',
+          'fixed z-20 w-full border-b',
+          whiteBorderOpacity,
+          'transition-all duration-300',
           scrolled && 'bg-black/80 backdrop-blur-lg'
         )}
       >

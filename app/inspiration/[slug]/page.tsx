@@ -4,6 +4,7 @@ import { HeroHeader } from '@/components/header'
 import { PageHeader } from '@/components/page-header'
 import { Badge } from '@/components/ui/badge'
 import { getAllSlugs, getPostBySlug } from '@/lib/inspiration'
+import { cn, containerBorders, topBorder } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
@@ -104,8 +105,8 @@ export default async function InspirationPostPage({ params }: PageProps) {
         </PageHeader>
 
         {/* Article Content */}
-        <article className="bg-background border-border border-t">
-          <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-16">
+        <article className={cn('bg-background', topBorder())}>
+          <div className={cn(containerBorders(), 'px-6 py-16')}>
             <div className="mx-auto max-w-4xl">
               <div className="prose prose-lg prose-neutral dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-h2:mb-4 prose-h2:mt-12 prose-h2:text-3xl prose-h3:mb-3 prose-h3:mt-8 prose-h3:text-2xl prose-h4:mb-2 prose-h4:mt-6 prose-h4:text-xl prose-p:mb-4 prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline prose-a:transition-colors hover:prose-a:underline prose-strong:font-semibold prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:mb-2 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-pre:bg-muted prose-pre:p-4 prose-img:rounded-lg prose-hr:my-8 max-w-none">
                 <MDXRemote source={post.content} />

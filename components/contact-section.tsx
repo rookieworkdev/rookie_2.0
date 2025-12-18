@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { sectionContainer, sectionWrapper } from '@/lib/utils'
+import { cn, fullBorders, sectionContainer, sectionWrapper } from '@/lib/utils'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useState } from 'react'
@@ -128,7 +128,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-            className="bg-card border-border rounded-lg border p-8 shadow-xs"
+            className={cn('bg-card rounded-lg p-8 shadow-xs', fullBorders())}
           >
             <h3 className="mb-6 text-2xl font-medium tracking-tight">Skicka ett meddelande</h3>
 

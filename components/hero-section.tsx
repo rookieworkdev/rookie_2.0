@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
-import { horizontalPadding } from '@/lib/utils'
+import { cn, horizontalPadding, whiteBorderWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import { AutolivLogo, CoopLogistikLogo, KlarnaLogo, SkandiaLogo, VolvoLogo } from './company-logos'
@@ -29,7 +29,12 @@ export default function HeroSection() {
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
 
           {/* Border container wrapping entire section */}
-          <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col border-r border-l border-white/10">
+          <div
+            className={cn(
+              'relative mx-auto flex min-h-screen w-full max-w-7xl flex-col',
+              whiteBorderWrapper()
+            )}
+          >
             {/* Main content */}
             <div className={`flex-1 ${horizontalPadding} py-29.5`}>
               <motion.div

@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
-import { horizontalPadding } from '@/lib/utils'
+import { cn, horizontalPadding, whiteBorderWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -69,7 +69,12 @@ export function PageHeader({
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
 
       {/* Border container wrapping entire section */}
-      <div className="relative mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col justify-between border-r border-l border-white/10 md:min-h-[70vh]">
+      <div
+        className={cn(
+          'relative mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col justify-between md:min-h-[70vh]',
+          whiteBorderWrapper()
+        )}
+      >
         {/* Breadcrumb at top */}
         <div className={`${horizontalPadding} pt-24`}>
           {breadcrumbs && breadcrumbs.length > 0 && (

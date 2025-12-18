@@ -1,7 +1,7 @@
 'use client'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { sectionContainer, sectionWrapper } from '@/lib/utils'
+import { cn, fullBorders, mutedBorderOpacity, sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import { ReactNode } from 'react'
 
@@ -44,7 +44,10 @@ export default function TestimonialSection({
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-          className="bg-muted dark:bg-card border-border/50 mt-12 rounded-2xl border p-8 shadow-xs md:p-12"
+          className={cn(
+            'bg-muted dark:bg-card mt-12 rounded-2xl p-8 shadow-xs md:p-12',
+            fullBorders(mutedBorderOpacity)
+          )}
         >
           {/* Company logo */}
           <div className="mb-8">
