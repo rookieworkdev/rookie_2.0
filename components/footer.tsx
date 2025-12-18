@@ -23,8 +23,8 @@ const discoveryLinks = [
 
 export default function FooterSection() {
   return (
-    <footer className="bg-muted">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-8">
+    <footer className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 pt-16 pb-8">
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left Half - Logo and Tagline */}
           <div className="space-y-4">
@@ -69,7 +69,7 @@ export default function FooterSection() {
         </div>
 
         {/* Bottom Section - Copyright and Theme Toggle */}
-        <div className="border-border mt-16 flex flex-wrap items-center justify-between gap-6 border-t pt-6">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-6 pt-6">
           <span className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} Rookie, All rights reserved
           </span>

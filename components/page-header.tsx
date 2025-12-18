@@ -25,7 +25,7 @@ export function PageHeader({
   imageAlt = 'Header background',
 }: PageHeaderProps) {
   return (
-    <section className="relative flex min-h-[50vh] items-end justify-start md:min-h-[60vh]">
+    <section className="relative flex min-h-[60vh] items-end justify-start md:min-h-[70vh]">
       {/* Full-bleed background image/video */}
       {imageSrc.endsWith('.mp4') ? (
         <video
@@ -50,7 +50,7 @@ export function PageHeader({
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
 
-      <div className="mx-auto w-full max-w-7xl px-6 pt-24 pb-12 md:pb-16">
+      <div className="mx-auto w-full max-w-7xl px-6 pt-24 pb-12 md:pb-24">
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           animate={{ opacity: 1, filter: 'blur(0px)' }}
