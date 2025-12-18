@@ -51,8 +51,8 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Contact Details */}
           <motion.div

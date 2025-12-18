@@ -42,7 +42,7 @@ export default function JobseekerSection() {
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
           className="relative mt-12 pb-12"
         >
-          <InfiniteSlider speed={50} gap={16}>
+          <InfiniteSlider speed={50} gap={16} className="mx-[-24px]">
             {carouselItems.map((item, index) => (
               <div
                 key={index}
@@ -76,8 +76,8 @@ export default function JobseekerSection() {
             ))}
           </InfiniteSlider>
           {/* Fade overlays for edges */}
-          <div className="from-background via-background/50 pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r to-transparent" />
-          <div className="from-background via-background/50 pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l to-transparent" />
+          <div className="from-background/90 via-background/50 pointer-events-none absolute inset-y-0 left-0 mx-[-24px] w-32 bg-gradient-to-r to-transparent" />
+          <div className="from-background/90 via-background/50 pointer-events-none absolute inset-y-0 right-0 mx-[-24px] w-32 bg-gradient-to-l to-transparent" />
         </motion.div>
       </div>
     </section>
