@@ -10,7 +10,7 @@ import Link from 'next/link'
 export default function RookieOfMonthSection() {
   return (
     <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Employee card - Left side */}
           <motion.div

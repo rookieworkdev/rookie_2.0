@@ -30,7 +30,7 @@ export default function HeroSection() {
           {/* Border container wrapping entire section */}
           <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col border-r border-l border-white/10">
             {/* Main content */}
-            <div className="flex-1 px-6 py-36">
+            <div className="flex-1 px-6 py-29.5">
               <motion.div
                 initial={{ opacity: 0, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, filter: 'blur(0px)' }}
@@ -64,7 +64,7 @@ export default function HeroSection() {
             {/* Logo carousel */}
             <div className="pb-16">
               <div className="flex flex-col items-center gap-6">
-                <p className="text-end text-sm font-medium text-white/70">
+                <p className="text-end font-medium text-white/70">
                   Urval av bolag vi hjälpt med rekrytering
                 </p>
                 <div className="relative w-full">
@@ -86,12 +86,12 @@ export default function HeroSection() {
                     </div>
                   </InfiniteSlider>
                   <ProgressiveBlur
-                    className="pointer-events-none absolute top-0 left-0 h-full w-20"
+                    className="pointer-events-none absolute top-0 left-0 h-full w-12"
                     direction="left"
                     blurIntensity={1}
                   />
                   <ProgressiveBlur
-                    className="pointer-events-none absolute top-0 right-0 h-full w-20"
+                    className="pointer-events-none absolute top-0 right-0 h-full w-12"
                     direction="right"
                     blurIntensity={1}
                   />

@@ -49,8 +49,8 @@ export default function JobsCarouselSection({
   }
 
   return (
-    <section className="border-border bg-muted border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+    <section className="border-border border-t">
+      <div className="border-border bg-muted mx-auto max-w-7xl border-r border-l px-6 py-20">
         {/* Section header */}
         <div className="mb-12 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <motion.div
@@ -130,7 +130,7 @@ export default function JobsCarouselSection({
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="mt-8 text-center"
+            className="mt-8 flex justify-start text-center"
           >
             <Button asChild size="lg" variant="secondary">
               <Link href="/lediga-jobb">

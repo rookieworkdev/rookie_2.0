@@ -6,7 +6,7 @@ export default function InspirationGridSection() {
 
   return (
     <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
         {posts.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, index) => (

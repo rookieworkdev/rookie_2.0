@@ -33,7 +33,7 @@ export default function IntegritetspolicyPage() {
           title="Hur vi hanterar dina personuppgifter"
           description="Vi värnar om din integritet och följer gällande dataskyddslagar."
         />
-        <section className="py-24">
+        <section className="py-20">
           <div className="mx-auto max-w-7xl px-6">
             <div className="prose prose-lg max-w-none">
               <p>Innehåll kommer snart...</p>

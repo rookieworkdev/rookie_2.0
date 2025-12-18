@@ -49,7 +49,7 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
   if (variant === 'double') {
     return (
       <section className="bg-background border-border border-t">
-        <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+        <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
           <div className="flex flex-col gap-6 lg:flex-row">
             {/* First CTA Container */}
             <motion.div
@@ -126,13 +126,13 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
   // Single variant (default)
   return (
     <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+      <div className="border-border mx-auto max-w-7xl border-r border-l">
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="relative overflow-hidden rounded-2xl p-8 shadow-xs md:p-12 lg:p-16"
+          className="relative overflow-hidden shadow-xs"
         >
           {/* Background Image */}
           <div
@@ -146,9 +146,9 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
           <div className="absolute inset-0 bg-linear-to-br from-black/80 via-black/50 to-black/0" />
 
           {/* Content */}
-          <div className="relative flex flex-col justify-between gap-8 md:min-h-[200px]">
+          <div className="relative flex flex-col justify-between gap-8 px-6 py-20 md:min-h-[200px]">
             <div className="max-w-2xl">
-              <h2 className="text-3xl font-medium tracking-tight text-white md:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-medium tracking-tight text-white md:text-3xl lg:text-4xl">
                 {singleContent.title}
               </h2>
               <p className="mt-4 max-w-xl text-lg text-pretty text-white/80">

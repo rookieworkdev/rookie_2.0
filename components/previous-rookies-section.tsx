@@ -8,8 +8,8 @@ import { motion } from 'motion/react'
 
 export default function PreviousRookiesSection() {
   return (
-    <section id="utmarkelser" className="bg-muted border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+    <section id="utmarkelser" className="border-border border-t">
+      <div className="border-border bg-muted mx-auto max-w-7xl border-r border-l px-6 py-20">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}

@@ -39,7 +39,7 @@ export default function BenefitsSection({
 
   return (
     <section className="bg-muted border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}

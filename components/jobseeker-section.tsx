@@ -10,7 +10,7 @@ import Link from 'next/link'
 export default function JobseekerSection() {
   return (
     <section className="bg-background border-border border-t">
-      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-20">
         {/* Header with text and CTA */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -40,7 +40,7 @@ export default function JobseekerSection() {
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-          className="relative mt-12 pb-12"
+          className="relative mt-12"
         >
           <InfiniteSlider speed={50} gap={16} className="mx-[-24px]">
             {carouselItems.map((item, index) => (

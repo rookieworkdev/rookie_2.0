@@ -7,7 +7,7 @@ export default function NotFound() {
     <>
       <HeroHeader />
       <main className="flex min-h-screen items-center justify-center">
-        <div className="mx-auto max-w-2xl px-6 py-24 text-center">
+        <div className="mx-auto max-w-2xl px-6 py-20 text-center">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Inlägget hittades inte</h1>
           <p className="text-muted-foreground mt-4 text-lg">
             Det verkar som att det inlägg du letar efter inte finns eller har tagits bort.

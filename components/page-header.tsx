@@ -104,7 +104,7 @@ export function PageHeader({
         </div>
 
         {/* Title, description, and button group at bottom */}
-        <div className="px-6 pb-12 md:pb-24">
+        <div className="px-6 pb-12 md:pb-20">
           {children ? (
             children
           ) : (
