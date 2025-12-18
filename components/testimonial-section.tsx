@@ -22,8 +22,8 @@ export default function TestimonialSection({
   companyName,
 }: TestimonialProps) {
   return (
-    <section className="bg-muted py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -43,7 +43,7 @@ export default function TestimonialSection({
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-          className="bg-background mt-12 rounded-2xl p-8 shadow-xs md:p-12"
+          className="bg-muted dark:bg-card border-border/50 mt-12 rounded-2xl border p-8 shadow-xs md:p-12"
         >
           {/* Company logo */}
           <div className="mb-8">

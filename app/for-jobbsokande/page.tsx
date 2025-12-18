@@ -1,5 +1,9 @@
+import AboutSection from '@/components/about-section'
+import CTASection from '@/components/cta-section'
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
+import JobsCarouselSection from '@/components/jobs-carousel-section'
+import LargeImageSection from '@/components/large-image-section'
 import { PageHeader } from '@/components/page-header'
 import type { Metadata } from 'next'
 
@@ -29,24 +33,34 @@ export default function ForJobbsokandePage() {
       <HeroHeader />
       <main>
         <PageHeader
-          title="För jobbsökande"
-          description="Är du i början av din karriär? Då har du kommit helt rätt. Upptäck lediga jobb och ladda enkelt upp ditt CV för att göra dig synlig för spännande företag."
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'För jobbsökande' }]}
+          title="Kickstarta din karriär idag"
+          description="Är du i början av din karriär? Då har du kommit helt rätt."
           showButton
           buttonText="Hitta jobb"
           buttonHref="/lediga-jobb"
         />
-        <section className="py-24">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="prose prose-lg max-w-none">
-              <h2>Vad Rookie erbjuder unga arbetssökande</h2>
-              <p>
-                Är du i början av din karriär? Då har du kommit helt rätt. Upptäck lediga jobb och
-                ladda enkelt upp ditt CV för att göra dig synlig för spännande företag.
-              </p>
-              <p>Innehåll kommer snart...</p>
-            </div>
-          </div>
-        </section>
+        <AboutSection
+          title="Hitta ditt nästa jobb"
+          description="Rookie hjälper dig mellan 18-28 år att komma igång med karriären genom att koppla ihop dig med spännande företag som söker unga och drivna kollegor. På vår plattform tar du del av nya lediga tjänster och kan söka jobb genom att ladda upp ditt CV som gör dig tillgänglig för hundratals arbetsgivare. Oavsett om du är ute efter en deltid- eller heltidstjänst."
+          imageAlt="Hitta rätt kollegor"
+          ctaText="Registrera ditt CV"
+          ctaHref="/kontakt"
+        />
+        <LargeImageSection
+          title="Rekrytera snabbare och smidigare"
+          description="Vi nischar oss helt mot att matcha ihop unga talanger med företag. Vilket gör det enklare för dig att hitta lediga tjänster som passar din profil. Dessutom slipper du tävla mot de som har lång erfarenhet och många år av arbete i bagaget."
+        />
+        <JobsCarouselSection maxJobs={6} showCTA />
+        <CTASection
+          content={{
+            title: 'Är du ute efter jobb?',
+            description:
+              'Ladda enkelt upp ditt CV för att göra dig synlig för spännande företag och unika jobbmöjligheter.',
+            buttonText: 'Registrera ditt CV',
+            buttonHref: '/registrera-ditt-cv',
+          }}
+        />
       </main>
       <FooterSection />
     </>

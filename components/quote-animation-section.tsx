@@ -20,14 +20,14 @@ export default function QuoteAnimationSection({
   const words = quote.split(' ')
 
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-4xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.3 }}
-          className="flex flex-col gap-8"
+          className="mx-auto flex max-w-4xl flex-col gap-8"
         >
           {/* Quote text with word-by-word animation */}
           <blockquote className="text-2xl leading-[1.3] font-medium md:text-3xl lg:text-4xl">

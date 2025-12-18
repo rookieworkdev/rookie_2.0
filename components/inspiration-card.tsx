@@ -1,7 +1,7 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -29,39 +29,42 @@ export function InspirationCard({
 }: InspirationCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, filter: 'blur(12px)' }}
+      whileInView={{ opacity: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+      transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
     >
-      <Link href={`/inspiration/${slug}`}>
-        <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg">
-          <div className="relative aspect-video overflow-hidden">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute top-4 left-4">
-              <Badge variant="secondary">{category}</Badge>
-            </div>
+      <Link href={`/inspiration/${slug}`} className="group block">
+        <div className="relative aspect-video overflow-hidden rounded-t-xl">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+          />
+          <div className="absolute top-4 left-4">
+            <Badge variant="default">{category}</Badge>
           </div>
-          <CardContent className="p-6">
-            <h3 className="group-hover:text-primary text-xl font-semibold tracking-tight transition-colors">
+        </div>
+        <Card className="rounded-t-none transition-all duration-300 hover:shadow-md">
+          <CardHeader>
+            <CardTitle className="group-hover:text-primary line-clamp-2 text-xl transition-colors">
               {title}
-            </h3>
-            <p className="text-muted-foreground mt-2 line-clamp-2">{description}</p>
-            <div className="text-muted-foreground mt-4 flex items-center gap-2 text-sm">
-              <time dateTime={date}>
-                {new Date(date).toLocaleDateString('sv-SE', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-              <span>•</span>
-              <span>{author}</span>
+            </CardTitle>
+            <CardDescription className="line-clamp-3 text-base">{description}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="secondary">
+                <time dateTime={date}>
+                  {new Date(date).toLocaleDateString('sv-SE', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+              </Badge>
+              <Badge variant="secondary">{author}</Badge>
             </div>
           </CardContent>
         </Card>

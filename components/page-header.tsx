@@ -1,9 +1,22 @@
 'use client'
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+interface BreadcrumbItem {
+  label: string
+  href?: string
+}
 
 interface PageHeaderProps {
   title?: string
@@ -13,6 +26,8 @@ interface PageHeaderProps {
   buttonHref?: string
   showButton?: boolean
   imageAlt?: string
+  breadcrumbs?: BreadcrumbItem[]
+  children?: React.ReactNode
 }
 
 export function PageHeader({
@@ -23,9 +38,11 @@ export function PageHeader({
   buttonHref,
   showButton = false,
   imageAlt = 'Header background',
+  breadcrumbs,
+  children,
 }: PageHeaderProps) {
   return (
-    <section className="relative flex min-h-[60vh] items-end justify-start md:min-h-[70vh]">
+    <section className="relative min-h-[60vh] md:min-h-[70vh]">
       {/* Full-bleed background image/video */}
       {imageSrc.endsWith('.mp4') ? (
         <video
@@ -50,30 +67,71 @@ export function PageHeader({
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
 
-      <div className="mx-auto w-full max-w-7xl px-6 pt-24 pb-12 md:pb-24">
-        <motion.div
-          initial={{ opacity: 0, filter: 'blur(12px)' }}
-          animate={{ opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="max-w-3xl"
-        >
-          {title && (
-            <h1 className="text-4xl font-medium tracking-tight text-balance text-white md:text-5xl xl:text-6xl">
-              {title}
-            </h1>
+      <div className="relative flex h-full min-h-[60vh] w-full flex-col justify-between md:min-h-[70vh]">
+        <div className="mx-auto w-full max-w-7xl px-6 pt-24">
+          {/* Breadcrumb at top */}
+          {breadcrumbs && breadcrumbs.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, filter: 'blur(12px)' }}
+              animate={{ opacity: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <Breadcrumb>
+                <BreadcrumbList className="text-white/80">
+                  {breadcrumbs.map((crumb, index) => (
+                    <div key={index} className="contents">
+                      <BreadcrumbItem>
+                        {crumb.href ? (
+                          <BreadcrumbLink asChild>
+                            <Link href={crumb.href} className="text-white/80 hover:text-white">
+                              {crumb.label}
+                            </Link>
+                          </BreadcrumbLink>
+                        ) : (
+                          <BreadcrumbPage className="text-white">{crumb.label}</BreadcrumbPage>
+                        )}
+                      </BreadcrumbItem>
+                      {index < breadcrumbs.length - 1 && (
+                        <BreadcrumbSeparator className="text-white/60" />
+                      )}
+                    </div>
+                  ))}
+                </BreadcrumbList>
+              </Breadcrumb>
+            </motion.div>
           )}
-          {description && <p className="mt-6 max-w-2xl text-lg text-white/80">{description}</p>}
+        </div>
 
-          {showButton && buttonText && buttonHref && (
-            <div className="mt-8">
-              <Button asChild size="lg">
-                <Link href={buttonHref}>
-                  <span className="text-nowrap">{buttonText}</span>
-                </Link>
-              </Button>
-            </div>
+        {/* Title, description, and button group at bottom */}
+        <div className="mx-auto w-full max-w-7xl px-6 pb-12 md:pb-24">
+          {children ? (
+            children
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, filter: 'blur(12px)' }}
+              animate={{ opacity: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="max-w-3xl"
+            >
+              {title && (
+                <h1 className="text-4xl font-medium tracking-tight text-balance text-white md:text-5xl xl:text-6xl">
+                  {title}
+                </h1>
+              )}
+              {description && <p className="mt-6 max-w-2xl text-lg text-white/80">{description}</p>}
+
+              {showButton && buttonText && buttonHref && (
+                <div className="mt-8">
+                  <Button asChild size="lg">
+                    <Link href={buttonHref}>
+                      <span className="text-nowrap">{buttonText}</span>
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </motion.div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

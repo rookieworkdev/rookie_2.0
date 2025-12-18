@@ -19,8 +19,8 @@ export default function LargeImageSection({
   const descriptionArray = Array.isArray(description) ? description : [description]
 
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         {/* Full-width image on top */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}

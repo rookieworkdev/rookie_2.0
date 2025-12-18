@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { motion } from 'motion/react'
-import Image from 'next/image'
 import Link from 'next/link'
+import { AutolivLogo, CoopLogistikLogo, KlarnaLogo, SkandiaLogo, VolvoLogo } from './company-logos'
 import { HeroHeader } from './header'
 
 export default function HeroSection() {
@@ -70,84 +70,19 @@ export default function HeroSection() {
                 <div className="relative py-4 md:w-[calc(100%-11rem)]">
                   <InfiniteSlider speedOnHover={20} speed={40} gap={112}>
                     <div className="flex items-center justify-center">
-                      <Image
-                        className="mx-auto h-5 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                        alt="Nvidia Logo"
-                        height={20}
-                        width={100}
-                        unoptimized
-                      />
+                      <CoopLogistikLogo className="text-white" />
                     </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-4 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/column.svg"
-                        alt="Column Logo"
-                        height={16}
-                        width={80}
-                        unoptimized
-                      />
+                    <div className="flex items-center justify-center">
+                      <VolvoLogo className="text-white" />
                     </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-4 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/github.svg"
-                        alt="GitHub Logo"
-                        height={16}
-                        width={80}
-                        unoptimized
-                      />
+                    <div className="flex items-center justify-center">
+                      <KlarnaLogo className="text-white" />
                     </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-5 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/nike.svg"
-                        alt="Nike Logo"
-                        height={20}
-                        width={60}
-                        unoptimized
-                      />
+                    <div className="flex items-center justify-center">
+                      <SkandiaLogo className="text-white" />
                     </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-5 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                        alt="Lemon Squeezy Logo"
-                        height={20}
-                        width={120}
-                        unoptimized
-                      />
-                    </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-4 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/laravel.svg"
-                        alt="Laravel Logo"
-                        height={16}
-                        width={80}
-                        unoptimized
-                      />
-                    </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-7 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/lilly.svg"
-                        alt="Lilly Logo"
-                        height={28}
-                        width={60}
-                        unoptimized
-                      />
-                    </div>
-                    <div className="flex">
-                      <Image
-                        className="mx-auto h-6 w-auto invert"
-                        src="https://html.tailus.io/blocks/customers/openai.svg"
-                        alt="OpenAI Logo"
-                        height={24}
-                        width={100}
-                        unoptimized
-                      />
+                    <div className="flex items-center justify-center">
+                      <AutolivLogo className="text-white" />
                     </div>
                   </InfiniteSlider>
                   <ProgressiveBlur

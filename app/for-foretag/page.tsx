@@ -34,8 +34,9 @@ export default function ForForetagPage() {
       <HeroHeader />
       <main>
         <PageHeader
-          title="För företag"
-          description="Rookie är specialiserade på unga talanger. Vi har ett starkt nätverk av kvalitetssäkrade unga människor mellan 18-28 år."
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'För företag' }]}
+          title="Hitta kvalitetssäkrade unga talanger"
+          description="Rookie är specialiserade på unga talanger och har ett starkt nätverk av kvalitetssäkrade unga människor mellan 18-28 år."
           showButton
           buttonText="Hitta personal"
           buttonHref="/kontakt"

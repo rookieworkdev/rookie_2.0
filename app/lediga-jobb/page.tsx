@@ -1,5 +1,6 @@
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
+import JobsGridSection from '@/components/jobs-grid-section'
 import { PageHeader } from '@/components/page-header'
 import type { Metadata } from 'next'
 
@@ -29,16 +30,11 @@ export default function LedigaJobbPage() {
       <HeroHeader />
       <main>
         <PageHeader
-          title="Lediga jobb"
-          description="Upptäck lediga jobb för unga talanger mellan 18-28 år. Hitta din nästa karriärmöjlighet hos spännande företag."
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Lediga jobb' }]}
+          title="Rookie matchar unga talanger med lediga jobb"
+          description="Ta nästa steg i din karriär och hitta ditt nästa spännande jobb hos ett företag som söker unga talanger mellan 18-28 år."
         />
-        <section className="py-24">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="prose prose-lg max-w-none">
-              <p>Innehåll kommer snart...</p>
-            </div>
-          </div>
-        </section>
+        <JobsGridSection />
       </main>
       <FooterSection />
     </>

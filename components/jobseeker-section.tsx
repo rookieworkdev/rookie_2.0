@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
-import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { carouselItems } from '@/lib/career-carousel-data'
 import { motion } from 'motion/react'
 import Image from 'next/image'
@@ -10,8 +9,8 @@ import Link from 'next/link'
 
 export default function JobseekerSection() {
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         {/* Header with text and CTA */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -35,58 +34,52 @@ export default function JobseekerSection() {
             </Link>
           </Button>
         </motion.div>
+        {/* Full-width carousel */}
+        <motion.div
+          initial={{ opacity: 0, filter: 'blur(12px)' }}
+          whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+          className="relative mt-12 pb-12"
+        >
+          <InfiniteSlider speed={50} gap={16}>
+            {carouselItems.map((item, index) => (
+              <div
+                key={index}
+                className="relative aspect-square w-72 shrink-0 overflow-hidden rounded-2xl"
+              >
+                {item.type === 'image' ? (
+                  <>
+                    <Image
+                      src={item.image}
+                      alt={item.label || ''}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                    {item.label && (
+                      <div className="absolute top-3 right-3">
+                        <span className="bg-background/90 rounded-full px-3 py-1.5 text-sm font-medium backdrop-blur-sm">
+                          {item.label}
+                        </span>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <div className={`flex h-full w-full flex-col justify-end p-6 ${item.color}`}>
+                    <span className="text-5xl font-bold tracking-tight text-white">
+                      {item.title}
+                    </span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </InfiniteSlider>
+          {/* Fade overlays for edges */}
+          <div className="from-background via-background/50 pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r to-transparent" />
+          <div className="from-background via-background/50 pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l to-transparent" />
+        </motion.div>
       </div>
-
-      {/* Full-width carousel */}
-      <motion.div
-        initial={{ opacity: 0, filter: 'blur(12px)' }}
-        whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-        className="relative mt-12"
-      >
-        <InfiniteSlider speed={50} gap={16}>
-          {carouselItems.map((item, index) => (
-            <div
-              key={index}
-              className="relative aspect-square w-72 shrink-0 overflow-hidden rounded-2xl"
-            >
-              {item.type === 'image' ? (
-                <>
-                  <Image
-                    src={item.image}
-                    alt={item.label || ''}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  {item.label && (
-                    <div className="absolute top-3 right-3">
-                      <span className="bg-background/90 rounded-full px-3 py-1.5 text-sm font-medium backdrop-blur-sm">
-                        {item.label}
-                      </span>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div className={`flex h-full w-full flex-col justify-end p-6 ${item.color}`}>
-                  <span className="text-5xl font-bold tracking-tight text-white">{item.title}</span>
-                </div>
-              )}
-            </div>
-          ))}
-        </InfiniteSlider>
-        <ProgressiveBlur
-          className="pointer-events-none absolute inset-y-0 left-0 w-24"
-          direction="left"
-          blurIntensity={1}
-        />
-        <ProgressiveBlur
-          className="pointer-events-none absolute inset-y-0 right-0 w-24"
-          direction="right"
-          blurIntensity={1}
-        />
-      </motion.div>
     </section>
   )
 }

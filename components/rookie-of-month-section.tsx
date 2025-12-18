@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 export default function RookieOfMonthSection() {
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Employee card - Left side */}
           <motion.div
@@ -18,11 +18,11 @@ export default function RookieOfMonthSection() {
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="bg-muted flex aspect-4/3 flex-col justify-between rounded-xl p-6 shadow-xs md:p-8"
+            className="from-muted/50 to-primary/20 border-border/50 flex flex-col justify-between rounded-xl border bg-gradient-to-br p-6 shadow-xs md:p-8 dark:bg-gradient-to-br"
           >
             {/* Avatar, Name, and City grouped */}
             <div className="mb-8 flex flex-col items-center text-center">
-              <Avatar className="border-primary mb-4 size-32 border-2 shadow md:size-32">
+              <Avatar className="border-primary mb-4 size-32 md:size-32">
                 <AvatarImage
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80"
                   alt="Björn Gabrielsson"

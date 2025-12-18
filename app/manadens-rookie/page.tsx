@@ -1,6 +1,9 @@
+import CTASection from '@/components/cta-section'
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
 import { PageHeader } from '@/components/page-header'
+import PreviousRookiesSection from '@/components/previous-rookies-section'
+import RookieOfMonthSection from '@/components/rookie-of-month-section'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -29,16 +32,21 @@ export default function ManadensRookiePage() {
       <HeroHeader />
       <main>
         <PageHeader
-          title="Månadens Rookie"
-          description="Vi hyllar och uppmärksammar de mest framstående studenterna från olika program och universitet. Baserat på studenters akademiska prestationer utser vi varje månad Månadens Rookie."
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Månadens Rookie' }]}
+          title="Månadens mest lovande talang"
+          description="Vi hyllar och uppmärksammar de mest framstående studenterna från olika program och universitet runt om i Sverige."
         />
-        <section className="py-24">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="prose prose-lg max-w-none">
-              <p>Innehåll kommer snart...</p>
-            </div>
-          </div>
-        </section>
+        <RookieOfMonthSection />
+        <PreviousRookiesSection />
+        <CTASection
+          content={{
+            title: 'Kan vi hjälpa dig?',
+            description:
+              'Kontakta oss så berättar vi gärna mer om hur vi matchar unga talanger med rätt företag.',
+            buttonText: 'Kontakta oss',
+            buttonHref: '/kontakt',
+          }}
+        />
       </main>
       <FooterSection />
     </>

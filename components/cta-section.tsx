@@ -48,8 +48,8 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
 
   if (variant === 'double') {
     return (
-      <section className="bg-background py-24">
-        <div className="mx-auto w-full max-w-7xl px-6">
+      <section className="bg-background border-border border-t">
+        <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
           <div className="flex flex-col gap-6 lg:flex-row">
             {/* First CTA Container */}
             <motion.div
@@ -125,8 +125,8 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
 
   // Single variant (default)
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
@@ -151,7 +151,9 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
               <h2 className="text-3xl font-medium tracking-tight text-white md:text-4xl lg:text-5xl">
                 {singleContent.title}
               </h2>
-              <p className="mt-4 max-w-xl text-lg text-white/80">{singleContent.description}</p>
+              <p className="mt-4 max-w-xl text-lg text-pretty text-white/80">
+                {singleContent.description}
+              </p>
             </div>
             <div className="self-start">
               <Button asChild size="lg" variant={singleContent.buttonVariant || 'default'}>

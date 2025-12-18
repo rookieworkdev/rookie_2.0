@@ -34,8 +34,8 @@ export default function AboutSection({
   const descriptionArray = Array.isArray(description) ? description : [description]
 
   return (
-    <section className="bg-background py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="bg-background border-border border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image container */}
           <motion.div
@@ -85,7 +85,7 @@ export default function AboutSection({
 
             {/* Optional CTA button */}
             {ctaText && ctaHref && (
-              <div className="mt-6">
+              <div className={items && items.length > 0 ? 'mt-6' : 'mt-2'}>
                 <Button asChild size="lg">
                   <Link href={ctaHref}>
                     <span className="text-nowrap">{ctaText}</span>

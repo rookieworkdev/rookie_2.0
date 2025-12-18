@@ -31,8 +31,8 @@ const features = [
 
 export default function EmployerSection() {
   return (
-    <section className="bg-muted py-24">
-      <div className="mx-auto w-full max-w-7xl px-6">
+    <section className="border-border bg-muted border-t">
+      <div className="border-border mx-auto max-w-7xl border-r border-l px-6 py-24">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
@@ -60,7 +60,7 @@ export default function EmployerSection() {
               whileInView={{ opacity: 1, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
-              className="bg-background flex flex-col rounded-2xl p-2"
+              className="bg-background flex flex-col rounded-2xl p-2 shadow-xs"
             >
               <div className="relative aspect-3/2 w-full overflow-hidden rounded-xl">
                 <Image

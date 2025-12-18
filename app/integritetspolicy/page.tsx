@@ -29,7 +29,8 @@ export default function IntegritetspolicyPage() {
       <HeroHeader />
       <main>
         <PageHeader
-          title="Integritetspolicy"
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Integritetspolicy' }]}
+          title="Hur vi hanterar dina personuppgifter"
           description="Vi värnar om din integritet och följer gällande dataskyddslagar."
         />
         <section className="py-24">

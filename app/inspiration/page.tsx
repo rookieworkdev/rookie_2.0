@@ -35,6 +35,7 @@ export default function InspirationPage() {
         <PageHeader
           title="Inspiration"
           description="Få inspiration från framgångsrika unga talanger och företag. Läs om karriärvägar, tips och insikter från rekryteringsvärlden."
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Inspiration' }]}
         />
         <section className="py-24">
           <div className="mx-auto max-w-7xl px-6">

@@ -32,7 +32,8 @@ export default function OmOssPage() {
       <HeroHeader />
       <main>
         <PageHeader
-          title="Om oss"
+          breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Om oss' }]}
+          title="Vi matchar unga talanger med företag"
           description="Rookie underlättar rekryteringsprocessen för företag och unga jobbsökande genom att matcha rätt kompetens med rätt möjligheter."
         />
         <AboutSection
