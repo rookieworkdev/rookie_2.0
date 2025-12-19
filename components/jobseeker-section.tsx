@@ -43,7 +43,7 @@ export default function JobseekerSection() {
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
           className="relative mt-12"
         >
-          <InfiniteSlider speed={50} gap={16} className="mx-[-32px]">
+          <InfiniteSlider speed={50} gap={24} className="mx-[-32px]">
             {carouselItems.map((item, index) => (
               <div
                 key={index}
