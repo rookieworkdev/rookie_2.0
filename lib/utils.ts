@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Section utility classes for consistent borders and padding
-export const horizontalPadding = 'px-8'
+export const horizontalPadding = 'px-6 md:px-8'
 
 // Border utilities for consistent styling
 export const whiteBorderOpacity = 'border-white/10'
