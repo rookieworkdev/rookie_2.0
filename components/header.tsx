@@ -10,9 +10,9 @@ const menuItems = [
   { name: 'Månadens Rookie', href: '/manadens-rookie' },
   { name: 'För jobbsökande', href: '/for-jobbsokande' },
   { name: 'För företag', href: '/for-foretag' },
-  { name: 'Lediga jobb', href: '/lediga-jobb' },
   { name: 'Om oss', href: '/om-oss' },
   { name: 'Inspiration', href: '/inspiration' },
+  { name: 'Kontakt', href: '/kontakt' },
 ]
 
 export const HeroHeader = () => {
@@ -65,7 +65,7 @@ export const HeroHeader = () => {
                         className={cn(
                           'block duration-150',
                           scrolled
-                            ? 'hover:text-foreground font-medium text-white/80 hover:text-white'
+                            ? 'font-medium text-white/80 hover:text-white'
                             : 'font-medium text-white/80 hover:text-white'
                         )}
                       >
@@ -95,28 +95,38 @@ export const HeroHeader = () => {
               <div className="w-full md:w-fit">
                 {/* Mobile: keep default theme styling (menu surface is light) */}
                 <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:hidden">
-                  <Button asChild variant="outline" size="sm">
+                  <Button asChild size="sm">
                     <Link href="#">
-                      <span>Logga in</span>
+                      <span>Login</span>
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href="/lediga-jobb">
+                      <span>Hitta jobb</span>
                     </Link>
                   </Button>
                   <Button asChild size="sm">
-                    <Link href="/kontakt">
-                      <span>Kontakta oss</span>
+                    <Link href="/personal">
+                      <span>Hitta personal</span>
                     </Link>
                   </Button>
                 </div>
 
-                {/* Desktop: force “dark-mode” outline look even in light mode */}
+                {/* Desktop: force "dark-mode" outline look even in light mode */}
                 <div className="dark hidden w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:flex lg:items-center">
-                  <Button asChild variant="outline" size="sm">
+                  <Button asChild size="sm" variant="ghost">
                     <Link href="#">
-                      <span>Logga in</span>
+                      <span>Login</span>
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href="/lediga-jobb">
+                      <span>Hitta jobb</span>
                     </Link>
                   </Button>
                   <Button asChild size="sm">
-                    <Link href="/kontakt">
-                      <span>Kontakta oss</span>
+                    <Link href="/personal">
+                      <span>Hitta personal</span>
                     </Link>
                   </Button>
                 </div>

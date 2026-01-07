@@ -2,7 +2,7 @@
 
 import { JobCard } from '@/components/job-card'
 import { Button } from '@/components/ui/button'
-import { availableJobs } from '@/lib/jobs'
+import { Job } from '@/lib/jobs'
 import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'motion/react'
@@ -10,11 +10,13 @@ import Link from 'next/link'
 import { useRef, useState } from 'react'
 
 interface JobsCarouselSectionProps {
+  jobs: Job[]
   maxJobs?: number
   showCTA?: boolean
 }
 
 export default function JobsCarouselSection({
+  jobs,
   maxJobs = 6,
   showCTA = true,
 }: JobsCarouselSectionProps) {
@@ -22,7 +24,7 @@ export default function JobsCarouselSection({
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  const jobs = availableJobs.slice(0, maxJobs)
+  const displayedJobs = jobs.slice(0, maxJobs)
 
   const checkScrollability = () => {
     if (scrollContainerRef.current) {
@@ -108,7 +110,7 @@ export default function JobsCarouselSection({
               msOverflowStyle: 'none',
             }}
           >
-            {jobs.map((job, index) => (
+            {displayedJobs.map((job, index) => (
               <div key={job.id} className="min-w-[280px] shrink-0 sm:min-w-[340px]">
                 <JobCard job={job} index={index} disableAnimation />
               </div>

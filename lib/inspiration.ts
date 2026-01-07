@@ -1,8 +1,5 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import path from 'path'
-
-const postsDirectory = path.join(process.cwd(), 'content/inspiration')
+import { createServerClient } from './supabase/server'
+import { WebsiteInspiration } from './supabase'
 
 export interface InspirationPost {
   slug: string
@@ -15,71 +12,102 @@ export interface InspirationPost {
   content: string
 }
 
-export function getAllPosts(): InspirationPost[] {
-  // Check if directory exists
-  if (!fs.existsSync(postsDirectory)) {
+// Transform database row to InspirationPost interface
+function transformPost(row: WebsiteInspiration): InspirationPost {
+  return {
+    slug: row.slug,
+    title: row.title,
+    description: row.description,
+    date: row.date,
+    author: row.author,
+    image: row.image,
+    category: row.category,
+    content: row.content,
+  }
+}
+
+export async function getAllPosts(): Promise<InspirationPost[]> {
+  const supabase = createServerClient()
+  
+  const { data, error } = await supabase
+    .from('website_inspiration')
+    .select('*')
+    .eq('is_published', true)
+    .order('date', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching inspiration posts:', error)
     return []
   }
 
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '')
-      const fullPath = path.join(postsDirectory, fileName)
-      const fileContents = fs.readFileSync(fullPath, 'utf8')
-      const { data, content } = matter(fileContents)
-
-      return {
-        slug,
-        title: data.title,
-        description: data.description,
-        date: data.date,
-        author: data.author,
-        image: data.image,
-        category: data.category,
-        content,
-      } as InspirationPost
-    })
-
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+  return (data || []).map(transformPost)
 }
 
-export function getPostBySlug(slug: string): InspirationPost | null {
-  try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const { data, content } = matter(fileContents)
+export async function getPostBySlug(slug: string): Promise<InspirationPost | null> {
+  const supabase = createServerClient()
+  
+  const { data, error } = await supabase
+    .from('website_inspiration')
+    .select('*')
+    .eq('slug', slug)
+    .eq('is_published', true)
+    .single()
 
-    return {
-      slug,
-      title: data.title,
-      description: data.description,
-      date: data.date,
-      author: data.author,
-      image: data.image,
-      category: data.category,
-      content,
-    } as InspirationPost
-  } catch (error) {
+  if (error || !data) {
+    console.error('Error fetching inspiration post:', error)
     return null
   }
+
+  return transformPost(data)
 }
 
-export function getAllSlugs(): string[] {
-  if (!fs.existsSync(postsDirectory)) {
+export async function getAllSlugs(): Promise<string[]> {
+  const supabase = createServerClient()
+  
+  const { data, error } = await supabase
+    .from('website_inspiration')
+    .select('slug')
+    .eq('is_published', true)
+
+  if (error) {
+    console.error('Error fetching slugs:', error)
     return []
   }
 
-  const fileNames = fs.readdirSync(postsDirectory)
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => fileName.replace(/\.md$/, ''))
+  return (data || []).map((post) => post.slug)
+}
+
+export async function getPostsByCategory(category: string): Promise<InspirationPost[]> {
+  const supabase = createServerClient()
+  
+  const { data, error } = await supabase
+    .from('website_inspiration')
+    .select('*')
+    .eq('category', category)
+    .eq('is_published', true)
+    .order('date', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching posts by category:', error)
+    return []
+  }
+
+  return (data || []).map(transformPost)
+}
+
+export async function getCategories(): Promise<string[]> {
+  const supabase = createServerClient()
+  
+  const { data, error } = await supabase
+    .from('website_inspiration')
+    .select('category')
+    .eq('is_published', true)
+
+  if (error) {
+    console.error('Error fetching categories:', error)
+    return []
+  }
+
+  const categories = [...new Set((data || []).map((post) => post.category))]
+  return categories.sort()
 }

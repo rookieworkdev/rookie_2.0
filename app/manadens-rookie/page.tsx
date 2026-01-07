@@ -4,7 +4,12 @@ import { HeroHeader } from '@/components/header'
 import { PageHeader } from '@/components/page-header'
 import PreviousRookiesSection from '@/components/previous-rookies-section'
 import RookieOfMonthSection from '@/components/rookie-of-month-section'
+import { getCurrentRookie, getPreviousRookies } from '@/lib/previous-rookies'
 import type { Metadata } from 'next'
+
+// Revalidate this page every day (86400 seconds)
+// Rookie of the month changes monthly, so daily checks are sufficient
+export const revalidate = 86400
 
 export const metadata: Metadata = {
   title: 'Månadens Rookie',
@@ -26,7 +31,12 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ManadensRookiePage() {
+export default async function ManadensRookiePage() {
+  const [currentRookie, previousRookies] = await Promise.all([
+    getCurrentRookie(),
+    getPreviousRookies(),
+  ])
+
   return (
     <>
       <HeroHeader />
@@ -36,8 +46,8 @@ export default function ManadensRookiePage() {
           title="Månadens mest lovande talang"
           description="Vi hyllar och uppmärksammar de mest framstående studenterna från olika program och universitet runt om i Sverige."
         />
-        <RookieOfMonthSection />
-        <PreviousRookiesSection />
+        <RookieOfMonthSection rookie={currentRookie} />
+        <PreviousRookiesSection rookies={previousRookies} />
         <CTASection
           content={{
             title: 'Kan vi hjälpa dig?',

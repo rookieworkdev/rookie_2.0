@@ -89,7 +89,7 @@ export default function EmployerSection() {
           className="mt-12"
         >
           <Button asChild size="lg">
-            <Link href="#link">
+            <Link href="/personal">
               <span className="text-nowrap">Hitta personal</span>
             </Link>
           </Button>

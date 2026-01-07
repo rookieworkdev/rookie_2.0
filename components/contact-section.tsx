@@ -3,7 +3,15 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { submitContactAction } from '@/lib/actions/contact'
 import { cn, fullBorders, sectionContainer, sectionWrapper } from '@/lib/utils'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'motion/react'
@@ -25,18 +33,27 @@ export default function ContactSection() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    // TODO: Implement actual form submission
-    // For now, simulate an API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      setSubmitStatus('success')
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
+      const result = await submitContactAction({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        subject: formData.subject,
+        message: formData.message,
       })
+
+      if (result.success) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
     } catch (error) {
       setSubmitStatus('error')
     } finally {
@@ -45,10 +62,14 @@ export default function ContactSection() {
   }
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, subject: value }))
   }
 
   return (
@@ -181,20 +202,21 @@ export default function ContactSection() {
                 <Label htmlFor="subject">
                   Ämne <span className="text-destructive">*</span>
                 </Label>
-                <select
-                  id="subject"
-                  name="subject"
+                <Select
                   value={formData.subject}
-                  onChange={handleChange}
+                  onValueChange={handleSelectChange}
                   required
-                  className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <option value="">Välj ett ämne</option>
-                  <option value="jobseeker">Jag söker jobb</option>
-                  <option value="employer">Jag vill rekrytera</option>
-                  <option value="partnership">Samarbete</option>
-                  <option value="other">Övrigt</option>
-                </select>
+                  <SelectTrigger id="subject" className="w-full">
+                    <SelectValue placeholder="Välj ett ämne" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="jobseeker">Jag söker jobb</SelectItem>
+                    <SelectItem value="employer">Jag vill rekrytera</SelectItem>
+                    <SelectItem value="partnership">Samarbete</SelectItem>
+                    <SelectItem value="other">Övrigt</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">

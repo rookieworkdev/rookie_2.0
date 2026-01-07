@@ -1,10 +1,12 @@
 import { InspirationCard } from '@/components/inspiration-card'
-import { getAllPosts } from '@/lib/inspiration'
+import { InspirationPost } from '@/lib/inspiration'
 import { sectionContainer, sectionWrapper } from '@/lib/utils'
 
-export default function InspirationGridSection() {
-  const posts = getAllPosts()
+interface InspirationGridSectionProps {
+  posts: InspirationPost[]
+}
 
+export default function InspirationGridSection({ posts }: InspirationGridSectionProps) {
   return (
     <section className={sectionWrapper('bg-background')}>
       <div className={sectionContainer()}>

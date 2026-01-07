@@ -52,7 +52,7 @@ export default function HeroSection() {
 
                 <div className="mt-12 flex flex-col items-start justify-start gap-4 sm:flex-row">
                   <Button asChild size="lg">
-                    <Link href="/for-foretag">
+                    <Link href="/personal">
                       <span className="text-nowrap">Hitta personal</span>
                     </Link>
                   </Button>

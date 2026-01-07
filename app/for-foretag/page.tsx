@@ -8,6 +8,7 @@ import LargeImageSection from '@/components/large-image-section'
 import { PageHeader } from '@/components/page-header'
 import RookieOfMonthSection from '@/components/rookie-of-month-section'
 import TestimonialSection from '@/components/testimonial-section'
+import { getCurrentRookie } from '@/lib/previous-rookies'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -28,7 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ForForetagPage() {
+export default async function ForForetagPage() {
+  const currentRookie = await getCurrentRookie()
+
   return (
     <>
       <HeroHeader />
@@ -39,14 +42,14 @@ export default function ForForetagPage() {
           description="Rookie är specialiserade på unga talanger och har ett starkt nätverk av kvalitetssäkrade unga människor mellan 18-28 år."
           showButton
           buttonText="Hitta personal"
-          buttonHref="/kontakt"
+          buttonHref="/personal"
         />
         <AboutSection
           title="Hitta rätt kollegor"
           description="Gör ert företag synligt för unga arbetssökande och lista era lediga tjänster hos Rookie. Med vårt nätverk av ambitiösa arbetssökande och vår erfarenhet hjälper vi er landa rätt rekrytering. Oavsett om ditt företag är ute efter en hyrrekrytering, konsult eller vill rekrytera nya kollegor till teamet"
           imageAlt="Hitta rätt kollegor"
           ctaText="Hitta personal"
-          ctaHref="/kontakt"
+          ctaHref="/personal"
         />
         <LargeImageSection
           title="Rekrytera snabbare och smidigare"
@@ -94,7 +97,7 @@ export default function ForForetagPage() {
             },
           ]}
           ctaText="Hitta personal"
-          ctaHref="/kontakt"
+          ctaHref="/personal"
         />
         <TestimonialSection
           quote="Jag har använt mig av Håkan för rekrytering i flera roller och hos flera arbetsgivare. Anledningen är att Håkan arbetar hårt, levererar högkvalitativa kandidater och är mycket enkel att ha att göra med."
@@ -104,7 +107,7 @@ export default function ForForetagPage() {
           companyLogo={<VolvoLogo />}
           companyName="Volvo Cars Financial Services"
         />
-        <RookieOfMonthSection />
+        <RookieOfMonthSection rookie={currentRookie} />
         <CTASection
           variant="double"
           content={[

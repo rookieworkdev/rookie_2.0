@@ -1,8 +1,14 @@
+import CTASection from '@/components/cta-section'
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
 import JobsGridSection from '@/components/jobs-grid-section'
 import { PageHeader } from '@/components/page-header'
+import { getAvailableJobs } from '@/lib/jobs'
 import type { Metadata } from 'next'
+
+// Revalidate this page every hour (3600 seconds)
+// This ensures job listings stay fresh without requiring a full rebuild
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Lediga jobb',
@@ -24,7 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function LedigaJobbPage() {
+export default async function LedigaJobbPage() {
+  const jobs = await getAvailableJobs()
+
   return (
     <>
       <HeroHeader />
@@ -33,9 +41,23 @@ export default function LedigaJobbPage() {
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Lediga jobb' }]}
           title="Rookie matchar unga talanger med lediga jobb"
           description="Ta nästa steg i din karriär och hitta ditt nästa spännande jobb hos ett företag som söker unga talanger mellan 18-28 år."
+          showButton={true}
+          buttonText="Registrera dig här"
+          buttonHref="https://rookie-se.intelliplan.net/jobb/9/ansok"
+          buttonOpenInNewTab={true}
         />
-        <JobsGridSection />
+        <JobsGridSection jobs={jobs} />
       </main>
+      <CTASection
+        content={{
+          title: 'Redo att ta steget in i arbetslivet?',
+          description:
+            'Registrera dig här för att göra dig tillgänglig för hundratals arbetsgivare.',
+          buttonText: 'Registrera dig här',
+          buttonHref: 'https://rookie-se.intelliplan.net/jobb/9/ansok',
+          buttonOpenInNewTab: true,
+        }}
+      />
       <FooterSection />
     </>
   )

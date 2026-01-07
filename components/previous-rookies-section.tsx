@@ -2,12 +2,16 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { previousRookies } from '@/lib/previous-rookies'
+import { PreviousRookie } from '@/lib/previous-rookies'
 import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { GraduationCap } from 'lucide-react'
 import { motion } from 'motion/react'
 
-export default function PreviousRookiesSection() {
+interface PreviousRookiesSectionProps {
+  rookies: PreviousRookie[]
+}
+
+export default function PreviousRookiesSection({ rookies }: PreviousRookiesSectionProps) {
   return (
     <section id="utmarkelser" className={sectionWrapper()}>
       <div className={sectionContainer('bg-muted')}>
@@ -29,7 +33,7 @@ export default function PreviousRookiesSection() {
 
         {/* Grid of previous rookies */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {previousRookies.map((rookie, index) => (
+          {rookies.map((rookie, index) => (
             <motion.div
               key={rookie.id}
               initial={{ opacity: 0, filter: 'blur(12px)' }}

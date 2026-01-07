@@ -11,6 +11,7 @@ interface CTAItem {
   buttonText: string
   buttonHref?: string
   buttonVariant?: 'default' | 'secondary'
+  buttonOpenInNewTab?: boolean
 }
 
 interface CTASectionProps {
@@ -83,7 +84,7 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
                 </div>
                 <div className="self-start">
                   <Button asChild size="lg" variant={doubleContent[0].buttonVariant || 'default'}>
-                    <Link href={doubleContent[0].buttonHref || '/kontakt'}>
+                    <Link href={doubleContent[0].buttonHref || '/kontakt'} target={doubleContent[0].buttonOpenInNewTab ? '_blank' : undefined}>
                       <span className="text-nowrap">{doubleContent[0].buttonText}</span>
                     </Link>
                   </Button>
@@ -111,7 +112,7 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
                 </div>
                 <div className="self-start">
                   <Button asChild size="lg" variant={doubleContent[1].buttonVariant || 'default'}>
-                    <Link href={doubleContent[1].buttonHref || '/kontakt'}>
+                    <Link href={doubleContent[1].buttonHref || '/kontakt'} target={doubleContent[1].buttonOpenInNewTab ? '_blank' : undefined}>
                       <span className="text-nowrap">{doubleContent[1].buttonText}</span>
                     </Link>
                   </Button>
@@ -160,7 +161,7 @@ export default function CTASection({ variant = 'single', content }: CTASectionPr
             </div>
             <div className="self-start">
               <Button asChild size="lg" variant={singleContent.buttonVariant || 'default'}>
-                <Link href={singleContent.buttonHref || '/kontakt'}>
+                <Link href={singleContent.buttonHref || '/kontakt'} target={singleContent.buttonOpenInNewTab ? '_blank' : undefined}>
                   <span className="text-nowrap">{singleContent.buttonText}</span>
                 </Link>
               </Button>

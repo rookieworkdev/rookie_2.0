@@ -26,6 +26,7 @@ interface PageHeaderProps {
   buttonText?: string
   buttonHref?: string
   showButton?: boolean
+  buttonOpenInNewTab?: boolean
   imageAlt?: string
   breadcrumbs?: BreadcrumbItem[]
   children?: React.ReactNode
@@ -38,6 +39,7 @@ export function PageHeader({
   buttonText,
   buttonHref,
   showButton = false,
+  buttonOpenInNewTab = false,
   imageAlt = 'Header background',
   breadcrumbs,
   children,
@@ -130,7 +132,7 @@ export function PageHeader({
               {showButton && buttonText && buttonHref && (
                 <div className="mt-8">
                   <Button asChild size="lg">
-                    <Link href={buttonHref}>
+                    <Link href={buttonHref} target={buttonOpenInNewTab ? '_blank' : undefined}>
                       <span className="text-nowrap">{buttonText}</span>
                     </Link>
                   </Button>

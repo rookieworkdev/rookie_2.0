@@ -1,11 +1,15 @@
 'use client'
 
 import { JobCard } from '@/components/job-card'
-import { availableJobs } from '@/lib/jobs'
+import { Job } from '@/lib/jobs'
 import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 
-export default function JobsGridSection() {
+interface JobsGridSectionProps {
+  jobs: Job[]
+}
+
+export default function JobsGridSection({ jobs }: JobsGridSectionProps) {
   return (
     <section className={sectionWrapper()}>
       <div className={sectionContainer('bg-muted')}>
@@ -24,7 +28,7 @@ export default function JobsGridSection() {
 
         {/* Grid of jobs */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {availableJobs.map((job, index) => (
+          {jobs.map((job, index) => (
             <JobCard key={job.id} job={job} index={index} />
           ))}
         </div>

@@ -3,12 +3,21 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { PreviousRookie } from '@/lib/previous-rookies'
 import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { GraduationCap } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 
-export default function RookieOfMonthSection() {
+interface RookieOfMonthSectionProps {
+  rookie: PreviousRookie | null
+}
+
+export default function RookieOfMonthSection({ rookie }: RookieOfMonthSectionProps) {
+  if (!rookie) {
+    return null
+  }
+
   return (
     <section className={sectionWrapper('bg-background')}>
       <div className={sectionContainer()}>
@@ -24,14 +33,16 @@ export default function RookieOfMonthSection() {
             {/* Avatar, Name, and City grouped */}
             <div className="mb-8 flex flex-col items-center text-center">
               <Avatar className="mb-4 size-28 md:size-28">
-                <AvatarImage
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80"
-                  alt="Björn Gabrielsson"
-                />
-                <AvatarFallback className="text-3xl">BG</AvatarFallback>
+                <AvatarImage src={rookie.imageSrc} alt={rookie.name} />
+                <AvatarFallback className="text-3xl">
+                  {rookie.name
+                    .split(' ')
+                    .map((n) => n[0])
+                    .join('')}
+                </AvatarFallback>
               </Avatar>
-              <h3 className="mb-3 text-2xl font-semibold md:text-3xl">Björn Gabrielsson</h3>
-              <Badge variant="default">UMEÅ</Badge>
+              <h3 className="mb-3 text-2xl font-semibold md:text-3xl">{rookie.name}</h3>
+              <Badge variant="default">{rookie.city}</Badge>
             </div>
 
             {/* Studies and School with icons */}
@@ -40,16 +51,14 @@ export default function RookieOfMonthSection() {
                 <GraduationCap className="text-primary mt-0.5 size-5 shrink-0" />
                 <div className="flex-1">
                   <dt className="text-muted-foreground mb-1 font-medium">Studier</dt>
-                  <dd className="text-base">
-                    Civilingenjör i industriell ekonomi, Optimering och logistik
-                  </dd>
+                  <dd className="text-base">{rookie.studies}</dd>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <GraduationCap className="text-primary mt-0.5 size-5 shrink-0" />
                 <div className="flex-1">
                   <dt className="text-muted-foreground mb-1 font-medium">Skola</dt>
-                  <dd className="text-base">Umeå universitet</dd>
+                  <dd className="text-base">{rookie.school}</dd>
                 </div>
               </div>
             </div>
@@ -64,7 +73,7 @@ export default function RookieOfMonthSection() {
             className="flex flex-col"
           >
             <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-              Månadens rookie för <em className="text-primary not-italic">december</em>
+              Månadens rookie för <em className="text-primary not-italic">{rookie.month}</em>
             </h2>
             <p className="text-muted-foreground mt-6">
               Vi hyllar och uppmärksammar de mest framstående studenterna från olika program och

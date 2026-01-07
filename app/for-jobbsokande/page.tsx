@@ -5,6 +5,7 @@ import { HeroHeader } from '@/components/header'
 import JobsCarouselSection from '@/components/jobs-carousel-section'
 import LargeImageSection from '@/components/large-image-section'
 import { PageHeader } from '@/components/page-header'
+import { getAvailableJobs } from '@/lib/jobs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -27,7 +28,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ForJobbsokandePage() {
+export default async function ForJobbsokandePage() {
+  const jobs = await getAvailableJobs()
+
   return (
     <>
       <HeroHeader />
@@ -51,7 +54,7 @@ export default function ForJobbsokandePage() {
           title="Rekrytera snabbare och smidigare"
           description="Vi nischar oss helt mot att matcha ihop unga talanger med företag. Vilket gör det enklare för dig att hitta lediga tjänster som passar din profil. Dessutom slipper du tävla mot de som har lång erfarenhet och många år av arbete i bagaget."
         />
-        <JobsCarouselSection maxJobs={6} showCTA />
+        <JobsCarouselSection jobs={jobs} maxJobs={6} showCTA />
         <CTASection
           content={{
             title: 'Är du ute efter jobb?',

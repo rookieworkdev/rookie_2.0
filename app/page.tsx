@@ -7,8 +7,13 @@ import HeroSection from '@/components/hero-section'
 import JobseekerSection from '@/components/jobseeker-section'
 import RookieOfMonthSection from '@/components/rookie-of-month-section'
 import TestimonialSection from '@/components/testimonial-section'
+import { getCurrentRookie } from '@/lib/previous-rookies'
 import { DEFAULT_DESCRIPTION } from '@/lib/seo'
 import type { Metadata } from 'next'
+
+// Revalidate the homepage every day (86400 seconds)
+// Homepage shows current rookie which changes monthly
+export const revalidate = 86400
 
 export const metadata: Metadata = {
   title: 'Vi matchar företag med unga talanger',
@@ -27,7 +32,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Page() {
+export default async function Page() {
+  const currentRookie = await getCurrentRookie()
+
   return (
     <>
       <HeroSection />
@@ -42,7 +49,7 @@ export default function Page() {
         companyLogo={<CoopLogistikLogo />}
         companyName="Coop Logistik"
       />
-      <RookieOfMonthSection />
+      <RookieOfMonthSection rookie={currentRookie} />
       <CTASection
         content={{
           title: 'Kan vi hjälpa dig?',
