@@ -95,7 +95,12 @@ export const HeroHeader = () => {
               <div className="w-full md:w-fit">
                 {/* Mobile: keep default theme styling (menu surface is light) */}
                 <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:hidden">
-                  <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-accent-foreground">
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="ghost"
+                    className="text-white/80 underline-offset-4 shadow-none hover:text-white hover:underline"
+                  >
                     <Link href="#">
                       <span>Login</span>
                     </Link>
@@ -114,7 +119,12 @@ export const HeroHeader = () => {
 
                 {/* Desktop: force "dark-mode" outline look even in light mode */}
                 <div className="dark hidden w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit lg:flex lg:items-center">
-                  <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-accent-foreground">
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="ghost"
+                    className="text-white/80 shadow-none hover:text-white"
+                  >
                     <Link href="#">
                       <span>Login</span>
                     </Link>

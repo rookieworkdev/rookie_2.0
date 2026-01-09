@@ -57,7 +57,7 @@ export default function HeroSection() {
                     </Link>
                   </Button>
                   <div className="dark">
-                    <Button asChild size="lg" variant="secondary">
+                    <Button asChild size="lg" variant="outline">
                       <Link href="/lediga-jobb">
                         <span className="text-nowrap">Hitta jobb</span>
                       </Link>

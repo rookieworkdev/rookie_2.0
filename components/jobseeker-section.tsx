@@ -30,7 +30,7 @@ export default function JobseekerSection() {
             </p>
           </div>
           <Button asChild size="lg" variant="secondary" className="shrink-0">
-            <Link href="#link">
+            <Link href="/lediga-jobb">
               <span className="text-nowrap">Hitta jobb</span>
             </Link>
           </Button>

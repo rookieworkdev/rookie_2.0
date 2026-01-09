@@ -38,7 +38,7 @@ export default function FooterSection() {
   return (
     <footer className={sectionWrapper('bg-background')}>
       <div className={cn(containerBorders(), horizontalPadding, 'pt-16 pb-8')}>
-        <div className="grid gap-12 md:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Half - Logo and Tagline */}
           <div className="space-y-4">
             <Link href="/" aria-label="go home" className="block size-fit">
