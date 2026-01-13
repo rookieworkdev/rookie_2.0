@@ -68,7 +68,7 @@ export function PageHeader({
       )}
 
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.8)_100%)]" />
 
       {/* Border container wrapping entire section */}
       <div

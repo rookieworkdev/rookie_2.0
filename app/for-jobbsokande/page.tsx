@@ -42,6 +42,7 @@ export default async function ForJobbsokandePage() {
           showButton
           buttonText="Hitta jobb"
           buttonHref="/lediga-jobb"
+          imageSrc="/images/headers/young-creative.jpg"
         />
         <AboutSection
           title="Hitta ditt nästa jobb"

@@ -45,6 +45,7 @@ export default async function ManadensRookiePage() {
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Månadens Rookie' }]}
           title="Månadens mest lovande talang"
           description="Vi hyllar och uppmärksammar de mest framstående studenterna från olika program och universitet runt om i Sverige."
+          imageSrc="/images/headers/woman-writing.jpg"
         />
         <RookieOfMonthSection rookie={currentRookie} />
         <PreviousRookiesSection rookies={previousRookies} />

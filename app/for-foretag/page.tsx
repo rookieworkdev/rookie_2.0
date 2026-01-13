@@ -43,6 +43,7 @@ export default async function ForForetagPage() {
           showButton
           buttonText="Hitta personal"
           buttonHref="/personal"
+          imageSrc="/images/headers/professionals-at-work.jpg"
         />
         <AboutSection
           title="Hitta rätt kollegor"

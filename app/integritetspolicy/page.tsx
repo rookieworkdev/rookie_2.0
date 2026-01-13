@@ -33,6 +33,7 @@ export default function IntegritetspolicyPage() {
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Integritetspolicy' }]}
           title="Hur vi hanterar dina personuppgifter"
           description="Vi värnar om din integritet och följer gällande dataskyddslagar."
+          imageSrc="/images/headers/woman-professional.jpg"
         />
         <article className={cn('bg-background', topBorder())}>
           <div className={cn(containerBorders(), 'px-6 py-16')}>

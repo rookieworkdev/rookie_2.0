@@ -33,6 +33,7 @@ export default function KontaktPage() {
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Kontakt' }]}
           title="Hör av dig till oss"
           description="Kontakta oss så berättar vi gärna mer om hur vi kan hjälpa dig."
+          imageSrc="/images/headers/three-business-men.jpg"
         />
         <ContactSection />
       </main>

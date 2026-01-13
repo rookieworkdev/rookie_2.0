@@ -40,6 +40,7 @@ export default async function InspirationPage() {
           title="Inspiration"
           description="Få inspiration från framgångsrika unga talanger och företag. Läs om karriärvägar, tips och insikter från rekryteringsvärlden."
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Inspiration' }]}
+          imageSrc="/images/headers/woman-standing.jpg"
         />
         <InspirationGridSection posts={posts} />
       </main>

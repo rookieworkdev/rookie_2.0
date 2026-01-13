@@ -45,6 +45,7 @@ export default async function LedigaJobbPage() {
           buttonText="Registrera dig här"
           buttonHref="https://rookie-se.intelliplan.net/jobb/9/ansok"
           buttonOpenInNewTab={true}
+          imageSrc="/images/headers/man-working.jpg"
         />
         <JobsGridSection jobs={jobs} />
       </main>

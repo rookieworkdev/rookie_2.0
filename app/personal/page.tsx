@@ -35,6 +35,7 @@ export default async function PersonalPage() {
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Hitta personal' }]}
           title="Hitta rätt personal för ditt företag"
           description="Ert företag är nu ett steg närmare att signa nästa kandidat. Fyll i formuläret och berätta om ert personalbehov så återkommer vi inom kort!"
+          imageSrc="/images/headers/working-men.jpg"
         />
         <ContactSection />
         <RookieOfMonthSection rookie={currentRookie} />

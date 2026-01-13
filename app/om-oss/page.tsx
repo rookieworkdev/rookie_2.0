@@ -35,6 +35,7 @@ export default function OmOssPage() {
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Om oss' }]}
           title="Vi matchar unga talanger med företag"
           description="Rookie underlättar rekryteringsprocessen för företag och unga jobbsökande genom att matcha rätt kompetens med rätt möjligheter."
+          imageSrc="/images/headers/two-professionals.jpg"
         />
         <AboutSection
           title="Experter på att matcha unga talanger med företag"
