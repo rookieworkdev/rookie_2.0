@@ -9,6 +9,7 @@ import {
 } from '@/lib/seo'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
@@ -86,6 +87,12 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: '<ruttl-poetry id="4J4dMldOG6POis2C8oZp"></ruttl-poetry>',
+          }}
+        />
+        <Script src="https://web.ruttl.com/poetry.js" strategy="afterInteractive" />
       </body>
     </html>
   )
