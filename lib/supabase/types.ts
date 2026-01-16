@@ -13,6 +13,11 @@ export type Database = {
           phone: string | null
           status: string | null
           subject: string
+          company: string | null
+          industry: string | null
+          service_type: string | null
+          experience: string | null
+          consent: boolean
         }
         Insert: {
           created_at?: string | null
@@ -23,6 +28,11 @@ export type Database = {
           phone?: string | null
           status?: string | null
           subject: string
+          company?: string | null
+          industry?: string | null
+          service_type?: string | null
+          experience?: string | null
+          consent: boolean
         }
         Update: {
           created_at?: string | null
@@ -33,6 +43,11 @@ export type Database = {
           phone?: string | null
           status?: string | null
           subject?: string
+          company?: string | null
+          industry?: string | null
+          service_type?: string | null
+          experience?: string | null
+          consent?: boolean
         }
         Relationships: []
       }

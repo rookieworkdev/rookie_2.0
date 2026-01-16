@@ -35,7 +35,12 @@ export default function KontaktPage() {
           description="Kontakta oss så berättar vi gärna mer om hur vi kan hjälpa dig."
           imageSrc="/images/headers/three-business-men.jpg"
         />
-        <ContactSection />
+        <ContactSection
+          variant="simple"
+          subject="Allmän förfrågan"
+          title="Skicka ett meddelande"
+          description="Kontakta oss så berättar vi gärna mer om hur vi matchar unga talanger med rätt företag."
+        />
       </main>
       <FooterSection />
     </>

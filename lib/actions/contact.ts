@@ -7,8 +7,13 @@ export interface ContactFormData {
   name: string
   email: string
   phone?: string
-  subject: string
+  company?: string
+  industry?: string
+  service_type?: string
+  experience?: string
   message: string
+  consent: boolean
+  subject?: string
 }
 
 /**
@@ -25,8 +30,13 @@ export async function submitContactAction(
       name: formData.name,
       email: formData.email,
       phone: formData.phone || null,
-      subject: formData.subject,
+      company: formData.company || null,
+      industry: formData.industry || null,
+      service_type: formData.service_type || null,
+      experience: formData.experience || null,
+      subject: formData.subject || 'Allmän förfrågan',
       message: formData.message,
+      consent: formData.consent,
     }
 
     const { error } = await supabase.from('website_contacts').insert(contactData)

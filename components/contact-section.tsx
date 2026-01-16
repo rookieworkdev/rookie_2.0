@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
@@ -17,13 +18,29 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 
-export default function ContactSection() {
+export interface ContactSectionProps {
+  variant?: 'simple' | 'full'
+  subject?: string
+  title?: string
+  description?: string
+}
+
+export default function ContactSection({
+  variant = 'simple',
+  subject = 'Allmän förfrågan',
+  title = 'Skicka ett meddelande',
+  description,
+}: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    subject: '',
+    company: '',
+    industry: '',
+    service_type: '',
+    experience: '',
     message: '',
+    consent: false,
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -38,8 +55,13 @@ export default function ContactSection() {
         name: formData.name,
         email: formData.email,
         phone: formData.phone || undefined,
-        subject: formData.subject,
+        company: formData.company || undefined,
+        industry: formData.industry || undefined,
+        service_type: formData.service_type || undefined,
+        experience: formData.experience || undefined,
         message: formData.message,
+        consent: formData.consent,
+        subject,
       })
 
       if (result.success) {
@@ -48,28 +70,34 @@ export default function ContactSection() {
           name: '',
           email: '',
           phone: '',
-          subject: '',
+          company: '',
+          industry: '',
+          service_type: '',
+          experience: '',
           message: '',
+          consent: false,
         })
       } else {
         setSubmitStatus('error')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSelectChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, subject: value }))
+  const handleSelectChange = (field: string) => (value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setFormData((prev) => ({ ...prev, consent: checked }))
   }
 
   return (
@@ -89,8 +117,8 @@ export default function ContactSection() {
                 Kan vi hjälpa dig?
               </h2>
               <p className="text-muted-foreground text-lg">
-                Kontakta oss så berättar vi gärna mer om hur vi matchar unga talanger med rätt
-                företag.
+                {description ||
+                  'Kontakta oss så berättar vi gärna mer om hur vi matchar unga talanger med rätt företag.'}
               </p>
             </div>
 
@@ -151,9 +179,10 @@ export default function ContactSection() {
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
             className={cn('bg-card rounded-lg p-8 shadow-xs', fullBorders())}
           >
-            <h3 className="mb-6 text-2xl font-medium tracking-tight">Skicka ett meddelande</h3>
+            <h3 className="mb-6 text-2xl font-medium tracking-tight">{title}</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Namn */}
               <div className="space-y-2">
                 <Label htmlFor="name">
                   Namn <span className="text-destructive">*</span>
@@ -169,6 +198,7 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* Epost & Telefon */}
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="email">
@@ -198,30 +228,93 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="subject">
-                  Ämne <span className="text-destructive">*</span>
-                </Label>
-                <Select
-                  value={formData.subject}
-                  onValueChange={handleSelectChange}
-                  required
-                >
-                  <SelectTrigger id="subject" className="w-full">
-                    <SelectValue placeholder="Välj ett ämne" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="jobseeker">Jag söker jobb</SelectItem>
-                    <SelectItem value="employer">Jag vill rekrytera</SelectItem>
-                    <SelectItem value="partnership">Samarbete</SelectItem>
-                    <SelectItem value="other">Övrigt</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              {/* Full form fields - only show in 'full' variant */}
+              {variant === 'full' && (
+                <>
+                  {/* Bolag & Bransch */}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Bolag</Label>
+                      <Input
+                        id="company"
+                        name="company"
+                        type="text"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Ditt företagsnamn"
+                      />
+                    </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="industry">Bransch</Label>
+                      <Select
+                        value={formData.industry}
+                        onValueChange={handleSelectChange('industry')}
+                      >
+                        <SelectTrigger id="industry" className="w-full">
+                          <SelectValue placeholder="Välj bransch" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="tech">IT & Tech</SelectItem>
+                          <SelectItem value="finance">Bank & Finans</SelectItem>
+                          <SelectItem value="retail">Handel & E-handel</SelectItem>
+                          <SelectItem value="manufacturing">Tillverkning & Industri</SelectItem>
+                          <SelectItem value="healthcare">Hälsa & Sjukvård</SelectItem>
+                          <SelectItem value="consulting">Konsult & Rådgivning</SelectItem>
+                          <SelectItem value="media">Media & Kommunikation</SelectItem>
+                          <SelectItem value="education">Utbildning</SelectItem>
+                          <SelectItem value="other">Övrig bransch</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  {/* Tjänstetyp & Erfarenhet */}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="service_type">Tjänstetyp</Label>
+                      <Select
+                        value={formData.service_type}
+                        onValueChange={handleSelectChange('service_type')}
+                      >
+                        <SelectTrigger id="service_type" className="w-full">
+                          <SelectValue placeholder="Välj tjänstetyp" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="direktrekrytering">Direktrekrytering</SelectItem>
+                          <SelectItem value="hyresrekrytering">Hyresrekrytering</SelectItem>
+                          <SelectItem value="bemanning">Bemanning</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="experience">Erfarenhet (Senioritet)</Label>
+                      <Select
+                        value={formData.experience}
+                        onValueChange={handleSelectChange('experience')}
+                      >
+                        <SelectTrigger id="experience" className="w-full">
+                          <SelectValue placeholder="Välj erfarenhetsnivå" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="student">Student / Praktikant</SelectItem>
+                          <SelectItem value="junior">Junior (0-2 år)</SelectItem>
+                          <SelectItem value="mid">Mellan (2-5 år)</SelectItem>
+                          <SelectItem value="senior">Senior (5+ år)</SelectItem>
+                          <SelectItem value="any">Spelar ingen roll</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {/* Beskriv ditt behov (Fritext) */}
               <div className="space-y-2">
                 <Label htmlFor="message">
-                  Meddelande <span className="text-destructive">*</span>
+                  {variant === 'full' ? 'Beskriv ditt behov' : 'Meddelande'}{' '}
+                  <span className="text-destructive">*</span>
                 </Label>
                 <Textarea
                   id="message"
@@ -229,9 +322,36 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Berätta hur vi kan hjälpa dig..."
+                  placeholder={
+                    variant === 'full'
+                      ? 'Berätta hur vi kan hjälpa dig...'
+                      : 'Hur kan vi hjälpa dig?'
+                  }
                   rows={6}
                 />
+              </div>
+
+              {/* Samtycke */}
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id="consent"
+                  name="consent"
+                  checked={formData.consent}
+                  onCheckedChange={handleCheckboxChange}
+                  required
+                  className="mt-1"
+                />
+                <label htmlFor="consent" className="cursor-pointer text-sm leading-relaxed">
+                  jag samtycker till att mina personuppgifter behandlas i Rookies databas i enlighet
+                  med vår{' '}
+                  <a
+                    href="/integritetspolicy"
+                    className="text-primary underline hover:no-underline"
+                  >
+                    integritetspolicy
+                  </a>{' '}
+                  <span className="text-destructive">*</span>
+                </label>
               </div>
 
               {submitStatus === 'success' && (

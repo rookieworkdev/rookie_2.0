@@ -37,7 +37,12 @@ export default async function PersonalPage() {
           description="Ert företag är nu ett steg närmare att signa nästa kandidat. Fyll i formuläret och berätta om ert personalbehov så återkommer vi inom kort!"
           imageSrc="/images/headers/working-men.jpg"
         />
-        <ContactSection />
+        <ContactSection
+          variant="full"
+          subject="Rekryteringsförfrågan"
+          title="Skicka en rekryteringsförfrågan"
+          description="Kontakta oss så berättar vi gärna mer om hur vi matchar unga talanger med rätt företag."
+        />
         <RookieOfMonthSection rookie={currentRookie} />
       </main>
       <FooterSection />
