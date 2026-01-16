@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   openGraph: {
     url: '/for-foretag',
     title: 'För företag - Rookie',
-    description: 'Vi har ett starkt nätverk av kvalitetssäkrade unga talanger mellan 18-28 år.',
+    description: 'Vi har ett starkt nätverk av kvalitetssäkrade unga talanger och nyutexaminerade.',
   },
   twitter: {
     title: 'För företag - Rookie',
-    description: 'Vi har ett starkt nätverk av kvalitetssäkrade unga talanger mellan 18-28 år.',
+    description: 'Vi har ett starkt nätverk av kvalitetssäkrade unga talanger och nyutexaminerade.',
   },
 }
 
@@ -39,7 +39,7 @@ export default async function ForForetagPage() {
         <PageHeader
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'För företag' }]}
           title="Hitta kvalitetssäkrade unga talanger"
-          description="Rookie är specialiserade på unga talanger och har ett starkt nätverk av kvalitetssäkrade unga människor mellan 18-28 år."
+          description="Rookie är specialiserade på unga talanger och har ett starkt nätverk av kvalitetssäkrade nyexaminerade och junior-profiler."
           showButton
           buttonText="Hitta personal"
           buttonHref="/personal"
@@ -58,7 +58,7 @@ export default async function ForForetagPage() {
         />
         <BenefitsSection
           title="Öppna dörren för unga talanger"
-          description="Genom att fokusera på rekrytering av unga mellan 18-28 år, öppnar vi dörrar till nya möjligheter och främjar tillväxt och innovation på arbetsmarknaden. Upptäck fördelarna med att anställa unga vuxna och hur det kan vara nyckeln till framgång för ert företag."
+          description="Genom att fokusera på rekrytering av nyexaminerade och young professionals, öppnar vi dörrar till nya möjligheter och främjar tillväxt och innovation på arbetsmarknaden. Upptäck fördelarna med att anställa early talent och hur det kan vara nyckeln till framgång för ert företag."
           benefits={[
             {
               icon: 'target',

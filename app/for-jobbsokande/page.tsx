@@ -46,7 +46,7 @@ export default async function ForJobbsokandePage() {
         />
         <AboutSection
           title="Hitta ditt nästa jobb"
-          description="Rookie hjälper dig mellan 18-28 år att komma igång med karriären genom att koppla ihop dig med spännande företag som söker unga och drivna kollegor. På vår plattform tar du del av nya lediga tjänster och kan söka jobb genom att ladda upp ditt CV som gör dig tillgänglig för hundratals arbetsgivare. Oavsett om du är ute efter en deltid- eller heltidstjänst."
+          description="Rookie hjälper dig som är nyexaminerad eller i början av din karriär att komma igång genom att koppla ihop dig med spännande företag som söker unga talanger och drivna kollegor. På vår plattform tar du del av nya lediga tjänster och kan söka jobb genom att ladda upp ditt CV som gör dig tillgänglig för hundratals arbetsgivare. Oavsett om du är ute efter en deltid- eller heltidstjänst."
           imageAlt="Hitta rätt kollegor"
           ctaText="Registrera ditt CV"
           ctaHref="/kontakt"

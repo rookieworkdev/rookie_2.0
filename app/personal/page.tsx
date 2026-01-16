@@ -9,18 +9,18 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Hitta Personal',
   description:
-    'Kontakta Rookie så hjälper vi dig hitta rätt unga talanger för ditt företag. Vi matchar kvalitetssäkrade personer med din verksamhet.',
+    'Kontakta Rookie så hjälper vi dig hitta rätt unga talanger och nyexaminerade för ditt företag. Vi matchar kvalitetssäkrade junior-profiler med din verksamhet.',
   alternates: {
     canonical: '/personal',
   },
   openGraph: {
     url: '/personal',
     title: 'Hitta Personal - Rookie',
-    description: 'Kontakta Rookie så hjälper vi dig hitta rätt unga talanger för ditt företag.',
+    description: 'Kontakta Rookie så hjälper vi dig hitta rätt unga talanger och nyexaminerade för ditt företag.',
   },
   twitter: {
     title: 'Hitta Personal - Rookie',
-    description: 'Kontakta Rookie så hjälper vi dig hitta rätt unga talanger för ditt företag.',
+    description: 'Kontakta Rookie så hjälper vi dig hitta rätt unga talanger och nyexaminerade för ditt företag.',
   },
 }
 

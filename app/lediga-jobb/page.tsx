@@ -13,7 +13,7 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Lediga jobb',
   description:
-    'Upptäck lediga jobb för unga talanger mellan 18-28 år. Hitta din nästa karriärmöjlighet hos spännande företag.',
+    'Upptäck lediga jobb för unga talanger och nyexaminerade. Hitta din nästa karriärmöjlighet hos spännande företag.',
   alternates: {
     canonical: '/lediga-jobb',
   },
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     url: '/lediga-jobb',
     title: 'Lediga jobb - Rookie',
     description:
-      'Upptäck lediga jobb för unga talanger mellan 18-28 år. Hitta din nästa karriärmöjlighet hos spännande företag.',
+      'Upptäck lediga jobb för unga talanger och nyexaminerade. Hitta din nästa karriärmöjlighet hos spännande företag.',
   },
   twitter: {
     title: 'Lediga jobb - Rookie',
     description:
-      'Upptäck lediga jobb för unga talanger mellan 18-28 år. Hitta din nästa karriärmöjlighet hos spännande företag.',
+      'Upptäck lediga jobb för unga talanger och nyexaminerade. Hitta din nästa karriärmöjlighet hos spännande företag.',
   },
 }
 
@@ -40,7 +40,7 @@ export default async function LedigaJobbPage() {
         <PageHeader
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Lediga jobb' }]}
           title="Rookie matchar unga talanger med lediga jobb"
-          description="Ta nästa steg i din karriär och hitta ditt nästa spännande jobb hos ett företag som söker unga talanger mellan 18-28 år."
+          description="Ta nästa steg i din karriär och hitta ditt nästa spännande jobb hos ett företag som söker nyexaminerade och junior-talanger."
           showButton={true}
           buttonText="Registrera dig här"
           buttonHref="https://rookie-se.intelliplan.net/jobb/9/ansok"

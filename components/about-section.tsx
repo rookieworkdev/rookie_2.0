@@ -21,7 +21,7 @@ interface AboutSectionProps {
 export default function AboutSection({
   title = 'Ung kraft och starka möjligheter',
   description = [
-    'Rookie är dedikerade till att underlätta rekryteringsprocessen för både företag och unga jobbsökande genom att matcha rätt kompetens med rätt möjligheter. Vi förstår vikten av att anställa unga mellan 18-28 år för att skapa en dynamisk och framåtriktad arbetsmiljö.',
+    'Rookie är dedikerade till att underlätta rekryteringsprocessen för både företag och unga jobbsökande genom att matcha rätt kompetens med rätt möjligheter. Vi förstår vikten av att anställa nyexaminerade och junior-profiler för att skapa en dynamisk och framåtriktad arbetsmiljö.',
     'Unga talanger är redo att ta sig an nya utmaningar och bidrar med nya perspektiv till teamet som kan vara avgörande för att främja innovation och kreativitet inom organisationen.',
     'Upptäck hur vi kan hjälpa dig att forma din framtid eller att hitta de bästa unga talangerna för ditt företag.',
   ],
