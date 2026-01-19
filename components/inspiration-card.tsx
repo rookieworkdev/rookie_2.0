@@ -31,7 +31,7 @@ export function InspirationCard({
     <motion.div
       initial={{ opacity: 0, filter: 'blur(12px)' }}
       whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: '0px 0px 200px 0px' }}
       transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
     >
       <Link href={`/inspiration/${slug}`} className="group block">
@@ -41,6 +41,8 @@ export function InspirationCard({
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
           />
           <div className="absolute top-4 left-4">
             <Badge variant="default">{category}</Badge>

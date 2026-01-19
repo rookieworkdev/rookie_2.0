@@ -22,6 +22,7 @@ export default function HeroSection() {
             muted
             loop
             playsInline
+            preload="auto"
           >
             <source src="/rookie-hero-video.mp4" type="video/mp4" />
           </video>

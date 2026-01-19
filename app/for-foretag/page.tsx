@@ -1,15 +1,18 @@
-import AboutSection from '@/components/about-section'
-import BenefitsSection from '@/components/benefits-section'
 import { VolvoLogo } from '@/components/company-logos'
-import CTASection from '@/components/cta-section'
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
-import LargeImageSection from '@/components/large-image-section'
 import { PageHeader } from '@/components/page-header'
-import RookieOfMonthSection from '@/components/rookie-of-month-section'
-import TestimonialSection from '@/components/testimonial-section'
 import { getCurrentRookie } from '@/lib/previous-rookies'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for below-the-fold components
+const AboutSection = dynamic(() => import('@/components/about-section'))
+const LargeImageSection = dynamic(() => import('@/components/large-image-section'))
+const BenefitsSection = dynamic(() => import('@/components/benefits-section'))
+const TestimonialSection = dynamic(() => import('@/components/testimonial-section'))
+const RookieOfMonthSection = dynamic(() => import('@/components/rookie-of-month-section'))
+const CTASection = dynamic(() => import('@/components/cta-section'))
 
 export const metadata: Metadata = {
   title: 'För företag',

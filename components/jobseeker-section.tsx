@@ -16,7 +16,7 @@ export default function JobseekerSection() {
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end"
         >
@@ -39,7 +39,7 @@ export default function JobseekerSection() {
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
           className="relative mt-12"
         >
@@ -56,7 +56,8 @@ export default function JobseekerSection() {
                       alt={item.label || ''}
                       fill
                       className="object-cover"
-                      unoptimized
+                      sizes="288px"
+                      loading="lazy"
                     />
                     {item.label && (
                       <div className="absolute top-3 right-3">

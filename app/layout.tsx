@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@/components/theme-provider'
 import {
   DEFAULT_DESCRIPTION,
+  DEFAULT_KEYWORDS,
   metadataBase,
   OG_IMAGE_PATH,
   SITE_NAME,
@@ -8,20 +9,24 @@ import {
   TWITTER_IMAGE_PATH,
 } from '@/lib/seo'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+// Local Inter font for better performance (no external requests)
+const inter = localFont({
+  src: [
+    { path: './fonts/Inter-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/Inter-Italic.woff2', weight: '400', style: 'italic' },
+    { path: './fonts/Inter-Medium.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/Inter-SemiBold.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/Inter-Bold.woff2', weight: '700', style: 'normal' },
+    { path: './fonts/Inter-Black.woff2', weight: '900', style: 'normal' },
+    { path: './fonts/Inter-BlackItalic.woff2', weight: '900', style: 'italic' },
+  ],
+  variable: '--font-sans',
+  display: 'swap',
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
   metadataBase,
@@ -30,6 +35,7 @@ export const metadata: Metadata = {
     template: `%s - ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
+  keywords: DEFAULT_KEYWORDS,
   applicationName: SITE_NAME,
   manifest: '/manifest.webmanifest',
   robots: {
@@ -65,7 +71,8 @@ export const metadata: Metadata = {
     images: [TWITTER_IMAGE_PATH],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icon',
+    apple: '/apple-icon',
   },
 }
 
@@ -76,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv" className={inter.variable} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <ThemeProvider
           attribute="class"

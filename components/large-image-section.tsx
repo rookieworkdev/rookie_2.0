@@ -28,7 +28,7 @@ export default function LargeImageSection({
           <motion.div
             initial={{ opacity: 0, filter: 'blur(12px)' }}
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
           >
             <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">{title}</h2>
@@ -38,7 +38,7 @@ export default function LargeImageSection({
           <motion.div
             initial={{ opacity: 0, filter: 'blur(12px)' }}
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
             className="flex flex-col gap-6"
           >
@@ -53,11 +53,18 @@ export default function LargeImageSection({
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="bg-muted relative aspect-video w-full overflow-hidden rounded-2xl"
         >
-          <Image src={imageUrl} alt={imageAlt} fill className="object-cover" unoptimized />
+          <Image
+            src={imageUrl}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            loading="lazy"
+          />
         </motion.div>
       </div>
     </section>

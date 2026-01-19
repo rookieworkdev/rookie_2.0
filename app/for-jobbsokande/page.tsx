@@ -1,12 +1,15 @@
-import AboutSection from '@/components/about-section'
-import CTASection from '@/components/cta-section'
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
-import JobsCarouselSection from '@/components/jobs-carousel-section'
-import LargeImageSection from '@/components/large-image-section'
 import { PageHeader } from '@/components/page-header'
 import { getAvailableJobs } from '@/lib/jobs'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for below-the-fold components
+const AboutSection = dynamic(() => import('@/components/about-section'))
+const LargeImageSection = dynamic(() => import('@/components/large-image-section'))
+const JobsCarouselSection = dynamic(() => import('@/components/jobs-carousel-section'))
+const CTASection = dynamic(() => import('@/components/cta-section'))
 
 export const metadata: Metadata = {
   title: 'För jobbsökande',

@@ -1,15 +1,18 @@
-import AboutSection from '@/components/about-section'
 import { CoopLogistikLogo } from '@/components/company-logos'
-import CTASection from '@/components/cta-section'
-import EmployerSection from '@/components/employer-section'
 import FooterSection from '@/components/footer'
 import HeroSection from '@/components/hero-section'
-import JobseekerSection from '@/components/jobseeker-section'
-import RookieOfMonthSection from '@/components/rookie-of-month-section'
-import TestimonialSection from '@/components/testimonial-section'
 import { getCurrentRookie } from '@/lib/previous-rookies'
 import { DEFAULT_DESCRIPTION } from '@/lib/seo'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for below-the-fold components to reduce initial bundle
+const AboutSection = dynamic(() => import('@/components/about-section'))
+const EmployerSection = dynamic(() => import('@/components/employer-section'))
+const JobseekerSection = dynamic(() => import('@/components/jobseeker-section'))
+const TestimonialSection = dynamic(() => import('@/components/testimonial-section'))
+const RookieOfMonthSection = dynamic(() => import('@/components/rookie-of-month-section'))
+const CTASection = dynamic(() => import('@/components/cta-section'))
 
 // Revalidate the homepage every day (86400 seconds)
 // Homepage shows current rookie which changes monthly

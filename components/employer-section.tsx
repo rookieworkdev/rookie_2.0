@@ -38,7 +38,7 @@ export default function EmployerSection() {
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="max-w-3xl"
         >
@@ -59,7 +59,7 @@ export default function EmployerSection() {
               key={feature.title}
               initial={{ opacity: 0, filter: 'blur(12px)' }}
               whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-              viewport={{ once: true, margin: '-100px' }}
+              viewport={{ once: true, margin: '0px 0px 200px 0px' }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
               className="bg-background flex flex-col rounded-2xl p-2 shadow-xs"
             >
@@ -69,7 +69,8 @@ export default function EmployerSection() {
                   alt={feature.title}
                   fill
                   className="object-cover"
-                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
                 />
               </div>
               <div className="px-2 py-4">
@@ -84,7 +85,7 @@ export default function EmployerSection() {
         <motion.div
           initial={{ opacity: 0, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '0px 0px 200px 0px' }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
           className="mt-12"
         >

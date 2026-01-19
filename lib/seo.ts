@@ -8,6 +8,22 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://rookiework
 export const DEFAULT_DESCRIPTION =
   'Rookie är dedikerade till att underlätta rekryteringsprocessen för både företag och unga jobbsökande genom att matcha rätt kompetens med rätt möjligheter.'
 
+export const DEFAULT_KEYWORDS = [
+  'rekrytering',
+  'jobb',
+  'karriär',
+  'unga talanger',
+  'nyexaminerade',
+  'junior',
+  'jobbsökande',
+  'arbetsgivare',
+  'Stockholm',
+  'Sverige',
+  'hyrrekrytering',
+  'konsult',
+  'trainee',
+]
+
 export const metadataBase = new URL(SITE_URL)
 
 export const OG_IMAGE_PATH = '/opengraph-image'

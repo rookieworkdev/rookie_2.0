@@ -42,20 +42,27 @@ export default function AboutSection({
           <motion.div
             initial={{ opacity: 0, filter: 'blur(12px)' }}
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className={`bg-muted relative aspect-square w-full overflow-hidden rounded-2xl ${
               reversed ? 'lg:order-2' : ''
             }`}
           >
-            <Image src={imageUrl} alt={imageAlt} fill className="object-cover" unoptimized />
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
+            />
           </motion.div>
 
           {/* Text container */}
           <motion.div
             initial={{ opacity: 0, filter: 'blur(12px)' }}
             whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
             className={`flex flex-col ${reversed ? 'lg:order-1' : ''}`}
           >

@@ -101,7 +101,7 @@ export const HeroHeader = () => {
                     variant="ghost"
                     className="text-white/80 underline-offset-4 shadow-none hover:text-white hover:underline"
                   >
-                    <Link href="#">
+                    <Link href="https://rookie-se.on.intelliplan.eu/">
                       <span>Login</span>
                     </Link>
                   </Button>
@@ -125,7 +125,7 @@ export const HeroHeader = () => {
                     variant="ghost"
                     className="text-white/80 shadow-none hover:text-white"
                   >
-                    <Link href="#">
+                    <Link href="https://rookie-se.on.intelliplan.eu/">
                       <span>Login</span>
                     </Link>
                   </Button>

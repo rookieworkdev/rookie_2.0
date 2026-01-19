@@ -20,40 +20,19 @@ export default function OpenGraphImage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#0B0B0F',
-        color: '#FFFFFF',
+        background: 'linear-gradient(to right, #16a34a, #fde047)',
       }}
     >
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: 64,
-          width: '100%',
+          fontSize: 140,
+          fontWeight: 900,
+          fontStyle: 'italic',
+          letterSpacing: 8,
+          color: '#000000',
         }}
       >
-        <div
-          style={{
-            fontSize: 72,
-            fontWeight: 800,
-            letterSpacing: -2,
-            lineHeight: 1.1,
-          }}
-        >
-          {SITE_NAME}
-        </div>
-        <div style={{ height: 18 }} />
-        <div
-          style={{
-            fontSize: 32,
-            fontWeight: 500,
-            opacity: 0.9,
-            lineHeight: 1.2,
-            maxWidth: 900,
-          }}
-        >
-          rookiework.se
-        </div>
+        {SITE_NAME}
       </div>
     </div>,
     size

@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next'
 
+import { getAllSlugs } from '@/lib/inspiration'
 import { SITE_URL } from '@/lib/seo'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
 
-  const routes = [
+  const staticRoutes = [
     '',
     'manadens-rookie',
     'for-jobbsokande',
@@ -15,16 +16,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'inspiration',
     'kontakt',
     'integritetspolicy',
+    'personal',
   ]
 
-  return routes.map((route) => {
-    const url = route === '' ? SITE_URL : `${SITE_URL}/${route}`
+  const staticPages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+    url: route === '' ? SITE_URL : `${SITE_URL}/${route}`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: route === '' ? 1 : 0.7,
+  }))
 
-    return {
-      url,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: route === '' ? 1 : 0.7,
-    }
-  })
+  // Fetch dynamic inspiration post slugs
+  const inspirationSlugs = await getAllSlugs()
+  const inspirationPages: MetadataRoute.Sitemap = inspirationSlugs.map((slug) => ({
+    url: `${SITE_URL}/inspiration/${slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
+
+  return [...staticPages, ...inspirationPages]
 }

@@ -54,6 +54,7 @@ export function PageHeader({
           muted
           loop
           playsInline
+          preload="auto"
         >
           <source src={imageSrc} type="video/mp4" />
         </video>
@@ -63,6 +64,7 @@ export function PageHeader({
           alt={imageAlt}
           fill
           className="absolute inset-0 -z-20 object-cover"
+          sizes="100vw"
           priority
         />
       )}
