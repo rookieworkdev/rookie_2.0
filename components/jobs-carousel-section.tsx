@@ -26,13 +26,13 @@ export default function JobsCarouselSection({
 
   const displayedJobs = jobs.slice(0, maxJobs)
 
-  const checkScrollability = () => {
+  const checkScrollability = useCallback(() => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
       setCanScrollLeft(scrollLeft > 0)
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
     }
-  }
+  }, [])
 
   const scroll = useCallback((direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -49,7 +49,7 @@ export default function JobsCarouselSection({
       // Check scrollability after animation
       setTimeout(checkScrollability, 300)
     }
-  }, [])
+  }, [checkScrollability])
 
   // Keyboard navigation for carousel
   const handleKeyDown = useCallback(
@@ -147,10 +147,10 @@ export default function JobsCarouselSection({
 
           {/* Fade overlays for edges */}
           {canScrollLeft && (
-            <div className="from-muted via-muted/50 pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r to-transparent" />
+            <div className="from-muted via-muted/50 pointer-events-none absolute inset-y-0 left-0 w-40 bg-linear-to-r to-transparent" />
           )}
           {canScrollRight && (
-            <div className="from-muted via-muted/50 pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l to-transparent" />
+            <div className="from-muted via-muted/50 pointer-events-none absolute inset-y-0 right-0 w-40 bg-linear-to-l to-transparent" />
           )}
         </div>
 
