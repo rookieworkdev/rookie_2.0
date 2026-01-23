@@ -206,7 +206,7 @@ export default function ContactSection({
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="email">
-                    E-post <span className="text-destructive">*</span>
+                    Företags e-post <span className="text-destructive">*</span>
                   </Label>
                   <Input
                     id="email"
@@ -215,7 +215,7 @@ export default function ContactSection({
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="din@email.se"
+                    placeholder="namn@företag.se"
                   />
                 </div>
 
@@ -374,7 +374,8 @@ export default function ContactSection({
                   aria-live="assertive"
                   className="bg-destructive/10 text-destructive rounded-md p-4 text-sm"
                 >
-                  {errorMessage || 'Något gick fel. Försök igen eller kontakta oss via telefon eller e-post.'}
+                  {errorMessage ||
+                    'Något gick fel. Försök igen eller kontakta oss via telefon eller e-post.'}
                 </div>
               )}
 
