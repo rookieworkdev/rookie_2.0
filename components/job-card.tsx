@@ -1,12 +1,5 @@
 'use client'
 
-import {
-  AutolivLogo,
-  CoopLogistikLogo,
-  KlarnaLogo,
-  SkandiaLogo,
-  VolvoLogo,
-} from '@/components/company-logos'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import type { Job } from '@/lib/jobs'
@@ -21,17 +14,6 @@ interface JobCardProps {
 }
 
 export function JobCard({ job, index = 0, disableAnimation = false }: JobCardProps) {
-  const CompanyLogo =
-    job.company === 'Coop Logistik'
-      ? CoopLogistikLogo
-      : job.company === 'Volvo'
-        ? VolvoLogo
-        : job.company === 'Klarna'
-          ? KlarnaLogo
-          : job.company === 'Autoliv'
-            ? AutolivLogo
-            : SkandiaLogo
-
   const content = (
     <Link
       href={job.externalUrl}
@@ -41,11 +23,10 @@ export function JobCard({ job, index = 0, disableAnimation = false }: JobCardPro
     >
       <Card className="bg-background h-full shadow-xs ring-0 transition-all duration-300">
         <CardHeader>
-          <div className="mb-4 flex items-center justify-between">
-            <CompanyLogo className="h-6 w-auto" />
-            <ArrowUpRight className="text-muted-foreground size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </div>
-          <CardTitle className="text-xl">{job.title}</CardTitle>
+          <CardTitle className="flex items-start justify-between gap-2 text-xl">
+            <span>{job.title}</span>
+            <ArrowUpRight className="text-muted-foreground size-5 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </CardTitle>
           <CardDescription className="line-clamp-3 text-base">{job.description}</CardDescription>
         </CardHeader>
         <CardContent>

@@ -7,7 +7,7 @@ import { sectionContainer, sectionWrapper } from '@/lib/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface JobsCarouselSectionProps {
   jobs: Job[]
@@ -34,7 +34,7 @@ export default function JobsCarouselSection({
     }
   }
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = useCallback((direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = scrollContainerRef.current.clientWidth * 0.8
       const newScrollLeft =
@@ -49,7 +49,28 @@ export default function JobsCarouselSection({
       // Check scrollability after animation
       setTimeout(checkScrollability, 300)
     }
-  }
+  }, [])
+
+  // Keyboard navigation for carousel
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' && canScrollLeft) {
+        e.preventDefault()
+        scroll('left')
+      } else if (e.key === 'ArrowRight' && canScrollRight) {
+        e.preventDefault()
+        scroll('right')
+      }
+    },
+    [canScrollLeft, canScrollRight, scroll]
+  )
+
+  // Check scrollability on mount and window resize
+  useEffect(() => {
+    checkScrollability()
+    window.addEventListener('resize', checkScrollability)
+    return () => window.removeEventListener('resize', checkScrollability)
+  }, [displayedJobs])
 
   return (
     <section className={sectionWrapper()}>
@@ -100,11 +121,18 @@ export default function JobsCarouselSection({
         </div>
 
         {/* Carousel container */}
-        <div className="relative">
+        <div
+          className="relative"
+          role="region"
+          aria-label="Lediga tjänster karusell"
+          onKeyDown={handleKeyDown}
+        >
           <div
             ref={scrollContainerRef}
             onScroll={checkScrollability}
             className="no-scrollbar flex gap-6 overflow-x-auto pb-4"
+            tabIndex={0}
+            aria-label="Använd vänster- och högerpilarna för att navigera"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',

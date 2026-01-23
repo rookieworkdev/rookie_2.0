@@ -57,3 +57,98 @@ export const structuredData = JSON.stringify([
     },
   },
 ])
+
+export interface ArticleSchemaProps {
+  title: string
+  description: string
+  slug: string
+  date: string
+  author: string
+  image: string
+}
+
+export function generateArticleSchema(article: ArticleSchemaProps): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.description,
+    image: article.image.startsWith('http') ? article.image : `${SITE_URL}${article.image}`,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      '@type': 'Person',
+      name: article.author,
+    },
+    publisher: {
+      '@id': `${SITE_URL}#organization`,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/inspiration/${article.slug}`,
+    },
+  })
+}
+
+export interface JobSchemaProps {
+  title: string
+  description: string
+  company: string
+  location: string
+  postedDate: string
+  externalUrl: string
+}
+
+export function generateJobPostingSchema(job: JobSchemaProps): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: job.title,
+    description: job.description,
+    datePosted: job.postedDate,
+    hiringOrganization: {
+      '@type': 'Organization',
+      name: job.company,
+    },
+    jobLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: job.location,
+        addressCountry: 'SE',
+      },
+    },
+    employmentType: 'FULL_TIME',
+    url: job.externalUrl,
+  })
+}
+
+export function generateJobListingSchema(jobs: JobSchemaProps[]): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: jobs.map((job, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'JobPosting',
+        title: job.title,
+        description: job.description,
+        datePosted: job.postedDate,
+        hiringOrganization: {
+          '@type': 'Organization',
+          name: job.company,
+        },
+        jobLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: job.location,
+            addressCountry: 'SE',
+          },
+        },
+        url: job.externalUrl,
+      },
+    })),
+  })
+}

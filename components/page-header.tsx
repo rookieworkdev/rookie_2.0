@@ -30,6 +30,8 @@ interface PageHeaderProps {
   imageAlt?: string
   breadcrumbs?: BreadcrumbItem[]
   children?: React.ReactNode
+  headingLevel?: 'h1' | 'h2' | 'p'
+  videoDescription?: string
 }
 
 export function PageHeader({
@@ -43,7 +45,10 @@ export function PageHeader({
   imageAlt = 'Header background',
   breadcrumbs,
   children,
+  headingLevel = 'h1',
+  videoDescription = 'Dekorativ bakgrundsvideo som visar professionell arbetsmiljö',
 }: PageHeaderProps) {
+  const HeadingTag = headingLevel === 'p' ? 'p' : headingLevel
   return (
     <section className="relative min-h-[60vh] md:min-h-[70vh]">
       {/* Full-bleed background image/video */}
@@ -55,8 +60,11 @@ export function PageHeader({
           loop
           playsInline
           preload="auto"
+          aria-label={videoDescription}
+          aria-hidden="true"
         >
           <source src={imageSrc} type="video/mp4" />
+          <track kind="descriptions" label="Beskrivning" srcLang="sv" />
         </video>
       ) : (
         <Image
@@ -125,9 +133,9 @@ export function PageHeader({
               className="max-w-3xl"
             >
               {title && (
-                <h1 className="text-4xl font-medium tracking-tight text-balance text-white md:text-5xl xl:text-6xl">
+                <HeadingTag className="text-4xl font-medium tracking-tight text-balance text-white md:text-5xl xl:text-6xl">
                   {title}
-                </h1>
+                </HeadingTag>
               )}
               {description && <p className="mt-6 max-w-2xl text-lg text-white/80">{description}</p>}
 

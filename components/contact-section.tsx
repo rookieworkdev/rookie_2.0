@@ -44,11 +44,13 @@ export default function ContactSection({
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorMessage(null)
 
     try {
       const result = await submitContactAction({
@@ -79,9 +81,11 @@ export default function ContactSection({
         })
       } else {
         setSubmitStatus('error')
+        setErrorMessage(result.error || null)
       }
-    } catch {
+    } catch (error) {
       setSubmitStatus('error')
+      setErrorMessage(error instanceof Error ? error.message : 'Ett oväntat fel uppstod')
     } finally {
       setIsSubmitting(false)
     }
@@ -355,14 +359,22 @@ export default function ContactSection({
               </div>
 
               {submitStatus === 'success' && (
-                <div className="rounded-md bg-green-50 p-4 text-sm text-green-800 dark:bg-green-950 dark:text-green-200">
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="rounded-md bg-green-50 p-4 text-sm text-green-800 dark:bg-green-950 dark:text-green-200"
+                >
                   Tack för ditt meddelande! Vi återkommer så snart vi kan.
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="bg-destructive/10 text-destructive rounded-md p-4 text-sm">
-                  Något gick fel. Försök igen eller kontakta oss via telefon eller e-post.
+                <div
+                  role="alert"
+                  aria-live="assertive"
+                  className="bg-destructive/10 text-destructive rounded-md p-4 text-sm"
+                >
+                  {errorMessage || 'Något gick fel. Försök igen eller kontakta oss via telefon eller e-post.'}
                 </div>
               )}
 

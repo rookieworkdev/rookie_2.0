@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { cn, horizontalPadding, whiteBorderOpacity } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 const menuItems = [
   { name: 'Månadens Rookie', href: '/manadens-rookie' },
@@ -16,16 +16,60 @@ const menuItems = [
 ]
 
 export const HeroHeader = () => {
-  const [menuState, setMenuState] = React.useState(false)
-  const [scrolled, setScrolled] = React.useState(false)
+  const [menuState, setMenuState] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Focus trap for mobile menu
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (!menuState) return
+
+      if (e.key === 'Escape') {
+        setMenuState(false)
+        menuButtonRef.current?.focus()
+        return
+      }
+
+      if (e.key !== 'Tab') return
+
+      const focusableElements = menuRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      if (!focusableElements || focusableElements.length === 0) return
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault()
+        lastElement.focus()
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault()
+        firstElement.focus()
+      }
+    },
+    [menuState]
+  )
+
+  useEffect(() => {
+    if (menuState) {
+      document.addEventListener('keydown', handleKeyDown)
+      // Focus first menu item when opened
+      const firstLink = menuRef.current?.querySelector<HTMLElement>('a[href]')
+      firstLink?.focus()
+    }
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [menuState, handleKeyDown])
 
   return (
     <header>
@@ -47,10 +91,13 @@ export const HeroHeader = () => {
 
               <div className="flex items-center gap-2 lg:hidden">
                 <Button
+                  ref={menuButtonRef}
                   variant="default"
                   size="icon"
                   onClick={() => setMenuState(!menuState)}
-                  aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
+                  aria-label={menuState ? 'Stäng meny' : 'Öppna meny'}
+                  aria-expanded={menuState}
+                  aria-controls="mobile-menu"
                 >
                   {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
                 </Button>
@@ -77,7 +124,14 @@ export const HeroHeader = () => {
               </div>
             </div>
 
-            <div className="bg-background mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl in-data-[state=active]:block md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:in-data-[state=active]:flex dark:shadow-none dark:lg:bg-transparent">
+            <div
+              ref={menuRef}
+              id="mobile-menu"
+              role="dialog"
+              aria-modal={menuState ? 'true' : undefined}
+              aria-label="Navigeringsmeny"
+              className="bg-background mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl in-data-[state=active]:block md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:in-data-[state=active]:flex dark:shadow-none dark:lg:bg-transparent"
+            >
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
                   {menuItems.map((item, index) => (

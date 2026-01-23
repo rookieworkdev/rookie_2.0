@@ -4,6 +4,7 @@ import { HeroHeader } from '@/components/header'
 import JobsGridSection from '@/components/jobs-grid-section'
 import { PageHeader } from '@/components/page-header'
 import { getAvailableJobs } from '@/lib/jobs'
+import { generateJobListingSchema } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 // Revalidate this page every hour (3600 seconds)
@@ -33,8 +34,23 @@ export const metadata: Metadata = {
 export default async function LedigaJobbPage() {
   const jobs = await getAvailableJobs()
 
+  const jobListingSchema = generateJobListingSchema(
+    jobs.map((job) => ({
+      title: job.title,
+      description: job.description,
+      company: job.company,
+      location: job.location,
+      postedDate: job.postedDate,
+      externalUrl: job.externalUrl,
+    }))
+  )
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jobListingSchema }}
+      />
       <HeroHeader />
       <main>
         <PageHeader

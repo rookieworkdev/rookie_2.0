@@ -74,8 +74,8 @@ export default function BenefitsSection({
                 transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
                 className="bg-background flex flex-col gap-4 rounded-2xl p-6 shadow-xs"
               >
-                <div className="bg-primary text-primary-foreground flex h-12 w-12 items-center justify-center rounded-xl">
-                  <Icon className="h-6 w-6" strokeWidth={2} />
+                <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-xl">
+                  <Icon className="text-primary h-6 w-6" strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="text-xl font-medium">{benefit.title}</h3>

@@ -4,6 +4,7 @@ import { HeroHeader } from '@/components/header'
 import { PageHeader } from '@/components/page-header'
 import { Badge } from '@/components/ui/badge'
 import { getAllSlugs, getPostBySlug } from '@/lib/inspiration'
+import { generateArticleSchema } from '@/lib/seo'
 import { cn, containerBorders, topBorder } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -73,8 +74,21 @@ export default async function InspirationPostPage({ params }: PageProps) {
     notFound()
   }
 
+  const articleSchema = generateArticleSchema({
+    title: post.title,
+    description: post.description,
+    slug: slug,
+    date: post.date,
+    author: post.author,
+    image: post.image,
+  })
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: articleSchema }}
+      />
       <HeroHeader />
       <main>
         {/* Hero Image Section with PageHeader */}
@@ -86,6 +100,7 @@ export default async function InspirationPostPage({ params }: PageProps) {
             { label: 'Inspiration', href: '/inspiration' },
             { label: post.title },
           ]}
+          headingLevel="p"
         >
           <div className="max-w-4xl">
             <Badge variant="default" className="mb-6">
