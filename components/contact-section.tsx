@@ -286,7 +286,7 @@ export default function ContactSection({
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="direktrekrytering">Direktrekrytering</SelectItem>
-                          <SelectItem value="hyresrekrytering">Hyresrekrytering</SelectItem>
+                          <SelectItem value="hyresrekrytering">Hyrrekrytering</SelectItem>
                           <SelectItem value="bemanning">Bemanning</SelectItem>
                         </SelectContent>
                       </Select>

@@ -39,6 +39,9 @@ pnpm-debug.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# MCP configuration (contains tokens)
+.mcp.json
+
 # vercel
 .vercel
 
