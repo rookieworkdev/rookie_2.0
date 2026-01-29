@@ -3,54 +3,6 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
   public: {
     Tables: {
-      website_contacts: {
-        Row: {
-          created_at: string | null
-          email: string
-          id: string
-          message: string
-          name: string
-          phone: string | null
-          status: string | null
-          subject: string
-          company: string | null
-          industry: string | null
-          service_type: string | null
-          experience: string | null
-          consent: boolean
-        }
-        Insert: {
-          created_at?: string | null
-          email: string
-          id?: string
-          message: string
-          name: string
-          phone?: string | null
-          status?: string | null
-          subject: string
-          company?: string | null
-          industry?: string | null
-          service_type?: string | null
-          experience?: string | null
-          consent: boolean
-        }
-        Update: {
-          created_at?: string | null
-          email?: string
-          id?: string
-          message?: string
-          name?: string
-          phone?: string | null
-          status?: string | null
-          subject?: string
-          company?: string | null
-          industry?: string | null
-          service_type?: string | null
-          experience?: string | null
-          consent?: boolean
-        }
-        Relationships: []
-      }
       website_inspiration: {
         Row: {
           author: string
@@ -200,5 +152,3 @@ export type Database = {
 export type WebsiteJob = Database['public']['Tables']['website_jobs']['Row']
 export type WebsiteRookie = Database['public']['Tables']['website_rookies']['Row']
 export type WebsiteInspiration = Database['public']['Tables']['website_inspiration']['Row']
-export type WebsiteContact = Database['public']['Tables']['website_contacts']['Row']
-export type WebsiteContactInsert = Database['public']['Tables']['website_contacts']['Insert']

@@ -72,15 +72,18 @@ export default async function LedigaJobbPage() {
 
 ### 2. Server Actions (Recommended for write operations)
 
-Form submissions and mutations use Server Actions:
+Database mutations use Server Actions:
 
 ```typescript
-// lib/actions/contact.ts
+// lib/actions/example.ts
 'use server'
 
-export async function submitContactAction(formData: ContactFormData) {
+export async function updateJobStatus(jobId: string, isActive: boolean) {
   const supabase = createServerClient()
-  const { error } = await supabase.from('website_contacts').insert(formData)
+  const { error } = await supabase
+    .from('website_jobs')
+    .update({ is_active: isActive })
+    .eq('id', jobId)
   return { success: !error }
 }
 ```
@@ -88,13 +91,15 @@ export async function submitContactAction(formData: ContactFormData) {
 Used in Client Components:
 
 ```typescript
-// components/contact-section.tsx
+// components/example.tsx
 'use client'
 
-import { submitContactAction } from '@/lib/actions/contact'
+import { updateJobStatus } from '@/lib/actions/example'
 
-const result = await submitContactAction(formData)
+const result = await updateJobStatus(jobId, false)
 ```
+
+**Note:** Contact form submissions use webhooks (not Supabase) - see `lib/actions/contact.ts`.
 
 ## Revalidation Strategy
 
@@ -142,10 +147,6 @@ revalidatePath('/lediga-jobb')
 - Current and previous Rookies of the Month
 - Current rookie: `is_current = true`
 - Previous rookies: `is_current = false`
-
-### website_contacts
-- Form submissions from contact page
-- Write-only (no public reads)
 
 ## Data Transformation
 
