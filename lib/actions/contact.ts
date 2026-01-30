@@ -52,7 +52,7 @@ export interface ContactFormData {
 }
 
 /**
- * Server Action to submit contact form data to n8n webhook.
+ * Server Action to submit contact form data to WEHOOK_URL.
  */
 export async function submitContactAction(
   formData: ContactFormData
@@ -68,14 +68,14 @@ export async function submitContactAction(
 
     const validatedData = validationResult.data
 
-    const webhookUrl = process.env.N8N_WEBHOOK_URL
+    const webhookUrl = process.env.WEBHOOK_URL
 
     if (!webhookUrl) {
-      console.error('N8N_WEBHOOK_URL is not configured')
+      console.error('WEBHOOK_URL is not configured')
       return { success: false, error: 'Server configuration error' }
     }
 
-    console.log('Submitting to n8n:', { webhookUrl })
+    console.log('Submitting to webhook:', { webhookUrl })
 
     const response = await fetch(webhookUrl, {
       method: 'POST',
@@ -86,31 +86,31 @@ export async function submitContactAction(
     })
 
     const responseText = await response.text()
-    console.log('n8n response:', {
+    console.log('Webhook response:', {
       status: response.status,
       statusText: response.statusText,
       body: responseText,
     })
 
     if (!response.ok) {
-      console.error('n8n webhook error:', response.status, response.statusText, responseText)
+      console.error('Webhook error:', response.status, response.statusText, responseText)
       return { success: false, error: 'Failed to submit form' }
     }
 
-    // Even if status is OK, check if n8n returned an error in the body
+    // Even if status is OK, check if webhook returned an error in the body
     try {
       const responseJson = JSON.parse(responseText)
       if (responseJson.error || responseJson.success === false) {
-        console.error('n8n returned error in response:', responseJson)
+        console.error('Webhook returned error in response:', responseJson)
         return { success: false, error: responseJson.error || 'Failed to submit form' }
       }
     } catch {
-      // Response is not JSON, that's okay for n8n webhooks
+      // Response is not JSON, that's okay for webhooks
     }
 
     return { success: true }
   } catch (error) {
-    console.error('Unexpected error submitting to n8n:', error)
+    console.error('Unexpected error submitting to webhook:', error)
     return {
       success: false,
       error: error instanceof Error ? error.message : 'An unexpected error occurred',
