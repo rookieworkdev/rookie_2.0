@@ -16,19 +16,17 @@ const contactFormSchema = z.object({
     .toLowerCase(),
   phone: z
     .string()
+    .min(1, 'Telefonnummer är obligatoriskt')
     .max(20, 'Telefonnumret får inte överstiga 20 tecken')
-    .trim()
-    .optional()
-    .or(z.literal('')),
+    .trim(),
   company: z
     .string()
+    .min(1, 'Företagsnamn är obligatoriskt')
     .max(100, 'Företagsnamnet får inte överstiga 100 tecken')
-    .trim()
-    .optional()
-    .or(z.literal('')),
-  industry: z.string().max(50).optional().or(z.literal('')),
-  service_type: z.string().max(50).optional().or(z.literal('')),
-  experience: z.string().max(50).optional().or(z.literal('')),
+    .trim(),
+  industry: z.string().min(1, 'Bransch är obligatorisk').max(50),
+  service_type: z.string().min(1, 'Tjänstetyp är obligatorisk').max(50),
+  experience: z.string().min(1, 'Erfarenhet är obligatorisk').max(50),
   message: z
     .string()
     .min(10, 'Meddelandet måste vara minst 10 tecken')
@@ -41,11 +39,11 @@ const contactFormSchema = z.object({
 export interface ContactFormData {
   name: string
   email: string
-  phone?: string
-  company?: string
-  industry?: string
-  service_type?: string
-  experience?: string
+  phone: string
+  company: string
+  industry: string
+  service_type: string
+  experience: string
   message: string
   consent: boolean
   subject?: string

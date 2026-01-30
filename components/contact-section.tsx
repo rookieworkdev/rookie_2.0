@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Spinner } from '@/components/ui/spinner'
 import { Textarea } from '@/components/ui/textarea'
 import { submitContactAction } from '@/lib/actions/contact'
 import { cn, fullBorders, sectionContainer, sectionWrapper } from '@/lib/utils'
@@ -56,11 +57,11 @@ export default function ContactSection({
       const result = await submitContactAction({
         name: formData.name,
         email: formData.email,
-        phone: formData.phone || undefined,
-        company: formData.company || undefined,
-        industry: formData.industry || undefined,
-        service_type: formData.service_type || undefined,
-        experience: formData.experience || undefined,
+        phone: formData.phone,
+        company: formData.company,
+        industry: formData.industry,
+        service_type: formData.service_type,
+        experience: formData.experience,
         message: formData.message,
         consent: formData.consent,
         subject,
@@ -220,13 +221,16 @@ export default function ContactSection({
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Telefon</Label>
+                  <Label htmlFor="phone">
+                    Telefon <span className="text-destructive">*</span>
+                  </Label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
+                    required
                     placeholder="070-123 45 67"
                   />
                 </div>
@@ -238,22 +242,28 @@ export default function ContactSection({
                   {/* Bolag & Bransch */}
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="company">Bolag</Label>
+                      <Label htmlFor="company">
+                        Företag <span className="text-destructive">*</span>
+                      </Label>
                       <Input
                         id="company"
                         name="company"
                         type="text"
                         value={formData.company}
                         onChange={handleChange}
+                        required
                         placeholder="Ditt företagsnamn"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="industry">Bransch</Label>
+                      <Label htmlFor="industry">
+                        Bransch <span className="text-destructive">*</span>
+                      </Label>
                       <Select
                         value={formData.industry}
                         onValueChange={handleSelectChange('industry')}
+                        required
                       >
                         <SelectTrigger id="industry" className="w-full">
                           <SelectValue placeholder="Välj bransch" />
@@ -276,10 +286,13 @@ export default function ContactSection({
                   {/* Tjänstetyp & Erfarenhet */}
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="service_type">Tjänstetyp</Label>
+                      <Label htmlFor="service_type">
+                        Tjänstetyp <span className="text-destructive">*</span>
+                      </Label>
                       <Select
                         value={formData.service_type}
                         onValueChange={handleSelectChange('service_type')}
+                        required
                       >
                         <SelectTrigger id="service_type" className="w-full">
                           <SelectValue placeholder="Välj tjänstetyp" />
@@ -293,16 +306,19 @@ export default function ContactSection({
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="experience">Erfarenhet (Senioritet)</Label>
+                      <Label htmlFor="experience">
+                        Erfarenhet (Senioritet) <span className="text-destructive">*</span>
+                      </Label>
                       <Select
                         value={formData.experience}
                         onValueChange={handleSelectChange('experience')}
+                        required
                       >
                         <SelectTrigger id="experience" className="w-full">
                           <SelectValue placeholder="Välj erfarenhetsnivå" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="student">Student / Praktikant</SelectItem>
+                          <SelectItem value="student">Student</SelectItem>
                           <SelectItem value="junior">Junior (0-2 år)</SelectItem>
                           <SelectItem value="mid">Mellan (2-5 år)</SelectItem>
                           <SelectItem value="senior">Senior (5+ år)</SelectItem>
@@ -380,7 +396,14 @@ export default function ContactSection({
               )}
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? 'Skickar...' : 'Skicka meddelande'}
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <Spinner size={16} />
+                    Skickar...
+                  </span>
+                ) : (
+                  'Skicka meddelande'
+                )}
               </Button>
             </form>
           </motion.div>
