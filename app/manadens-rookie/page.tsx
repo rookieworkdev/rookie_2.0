@@ -9,7 +9,8 @@ import type { Metadata } from 'next'
 
 // Revalidate this page every day (86400 seconds)
 // Rookie of the month changes monthly, so daily checks are sufficient
-export const revalidate = 86400
+// export const revalidate = 86400
+export const revalidate = 1
 
 export const metadata: Metadata = {
   title: 'Månadens Rookie',
