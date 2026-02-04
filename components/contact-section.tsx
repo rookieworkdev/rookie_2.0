@@ -320,7 +320,6 @@ export default function ContactSection({
                           <SelectItem value="student">Student</SelectItem>
                           <SelectItem value="junior">Junior (0-2 år)</SelectItem>
                           <SelectItem value="mid">Mellan (2-5 år)</SelectItem>
-                          <SelectItem value="senior">Senior (5+ år)</SelectItem>
                           <SelectItem value="any">Spelar ingen roll</SelectItem>
                         </SelectContent>
                       </Select>
