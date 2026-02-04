@@ -102,7 +102,9 @@ export const HeroHeader = () => {
                 >
                   {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
                 </Button>
-                <ThemeToggle />
+                <div className="dark [&_svg]:text-white!">
+                  <ThemeToggle />
+                </div>
               </div>
 
               <div className="hidden lg:block">
@@ -195,7 +197,9 @@ export const HeroHeader = () => {
                       <span>Hitta personal</span>
                     </Link>
                   </Button>
-                  <ThemeToggle />
+                  <div className="[&_svg]:text-white!">
+                    <ThemeToggle />
+                  </div>
                 </div>
               </div>
             </div>
