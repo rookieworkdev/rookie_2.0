@@ -1,5 +1,5 @@
 import { Logo } from '@/components/logo'
-import { ThemeToggle } from '@/components/theme-toggle'
+
 import { cn, containerBorders, horizontalPadding, sectionWrapper } from '@/lib/utils'
 import Link from 'next/link'
 
@@ -114,7 +114,6 @@ export default function FooterSection() {
               Site by Stormfors
             </a>
           </div>
-          <ThemeToggle />
         </div>
       </div>
     </footer>

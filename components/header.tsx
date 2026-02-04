@@ -5,6 +5,7 @@ import { cn, horizontalPadding, whiteBorderOpacity } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { ThemeToggle } from './theme-toggle'
 
 const menuItems = [
   { name: 'Månadens Rookie', href: '/manadens-rookie' },
@@ -101,6 +102,7 @@ export const HeroHeader = () => {
                 >
                   {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
                 </Button>
+                <ThemeToggle />
               </div>
 
               <div className="hidden lg:block">
@@ -193,6 +195,7 @@ export const HeroHeader = () => {
                       <span>Hitta personal</span>
                     </Link>
                   </Button>
+                  <ThemeToggle />
                 </div>
               </div>
             </div>
