@@ -270,12 +270,11 @@ export default function ContactSection({
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="tech">IT & Tech</SelectItem>
-                          <SelectItem value="finance">Bank & Finans</SelectItem>
+                          <SelectItem value="finance">Bank, Finans & Försäkring</SelectItem>
                           <SelectItem value="retail">Handel & E-handel</SelectItem>
                           <SelectItem value="manufacturing">Tillverkning & Industri</SelectItem>
                           <SelectItem value="consulting">Konsult & Rådgivning</SelectItem>
                           <SelectItem value="media">Media & Kommunikation</SelectItem>
-                          <SelectItem value="education">Utbildning</SelectItem>
                           <SelectItem value="other">Övrig bransch</SelectItem>
                         </SelectContent>
                       </Select>
