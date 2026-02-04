@@ -104,6 +104,7 @@ export default function FooterSection() {
             <span className="text-muted-foreground text-sm">
               © {new Date().getFullYear()} Rookie, All rights reserved
             </span>
+            {/*
             <span className="text-muted-foreground hidden sm:inline">•</span>
             <a
               href="https://stormfors.com"
@@ -113,6 +114,7 @@ export default function FooterSection() {
             >
               Site by Stormfors
             </a>
+            */}
           </div>
         </div>
       </div>
