@@ -73,7 +73,11 @@ export default function RookieOfMonthSection({ rookie }: RookieOfMonthSectionPro
             className="flex flex-col"
           >
             <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-              Månadens rookie för <em className="text-primary not-italic">{rookie.month}</em>
+              {/* Månadens rookie för <em className="text-primary not-italic">{rookie.month}</em> */}
+              Månadens rookie för{' '}
+              <em className="bg-linear-to-br from-green-700 via-green-600 to-yellow-400 bg-clip-text text-transparent not-italic">
+                {rookie.month}
+              </em>
             </h2>
             <p className="text-muted-foreground mt-6">
               Vi hyllar och uppmärksammar de mest framstående studenterna från olika program och
