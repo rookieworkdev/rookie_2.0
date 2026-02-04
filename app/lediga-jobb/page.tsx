@@ -56,7 +56,7 @@ export default async function LedigaJobbPage() {
         <PageHeader
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'Lediga jobb' }]}
           title="Rookie matchar unga talanger med lediga jobb"
-          description="Ta nästa steg i din karriär och hitta ditt nästa spännande jobb hos ett företag som söker nyexaminerade och junior-talanger."
+          description="Ta nästa steg i din karriär och hitta ditt nästa spännande jobb hos ett företag som söker nyexaminerade och juniora talanger."
           showButton={true}
           buttonText="Registrera dig här"
           buttonHref="https://rookie-se.intelliplan.net/jobb/9/ansok"

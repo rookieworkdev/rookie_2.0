@@ -48,7 +48,7 @@ export default async function Page() {
         quote="Det har varit ett smidigt samarbete och en träffsäkerhet i urval av rätt profiler. Det har bidragit till snabb tillsättning vid konsultbehov. Rekommenderas varmt!"
         authorName="Jesper Eriksson"
         authorTitle="Head of Finance & Business Control"
-        authorImage="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80"
+        authorImage="/avatars/jesper-eriksson.png"
         companyLogo={<CoopLogistikLogo />}
         companyName="Coop Logistik"
       />

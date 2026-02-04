@@ -42,7 +42,7 @@ export default async function ForForetagPage() {
         <PageHeader
           breadcrumbs={[{ label: 'Hem', href: '/' }, { label: 'För företag' }]}
           title="Hitta kvalitetssäkrade unga talanger"
-          description="Rookie är specialiserade på unga talanger och har ett starkt nätverk av kvalitetssäkrade nyexaminerade och junior-profiler."
+          description="Rookie är specialiserade på unga talanger och har ett starkt nätverk av kvalitetssäkrade nyexaminerade och juniora profiler."
           showButton
           buttonText="Hitta personal"
           buttonHref="/personal"

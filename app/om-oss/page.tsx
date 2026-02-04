@@ -40,7 +40,7 @@ export default function OmOssPage() {
         <AboutSection
           title="Experter på att matcha unga talanger med företag"
           description={[
-            'Vad gör oss unika? Vårt fokus på den unga generationens potential. Vår styrka är att matcha nyexaminerade och junior-talanger med företag som vill hitta passionerade och engagerade medarbetare. Vi förstår att unga talanger inte bara är framtiden, de är även nyckeln till att driva innovation och tillväxt i dagens organisationer.',
+            'Vad gör oss unika? Vårt fokus på den unga generationens potential. Vår styrka är att matcha nyexaminerade och juniora talanger med företag som vill hitta passionerade och engagerade medarbetare. Vi förstår att unga talanger inte bara är framtiden, de är även nyckeln till att driva innovation och tillväxt i dagens organisationer.',
             'Vår expertis inom rekrytering och matchning tillsammans med ett omfattande nätverk av både företag och unga arbetssökande gör oss till den perfekta partnern vid rekrytering.',
           ]}
           imageUrl="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"

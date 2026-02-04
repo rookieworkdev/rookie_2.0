@@ -47,8 +47,9 @@ export default function EmployerSection() {
           </h2>
           <p className="text-muted-foreground mt-6">
             Rookie är specialiserade på unga talanger. Vi har ett starkt nätverk av kvalitetssäkrade
-            nyexaminerade och junior-profiler. Oavsett om ditt företag är i behov av hyrrekrytering, konsult eller
-            rekrytering av en framtida kollega så är vi partnern för dig.
+            nyexaminerade och juniora profiler. Oavsett om ditt företag är i behov av
+            hyrrekrytering, konsult eller rekrytering av en framtida kollega så är vi partnern för
+            dig.
           </p>
         </motion.div>
 

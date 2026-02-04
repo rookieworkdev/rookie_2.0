@@ -6,7 +6,7 @@ import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { cn, horizontalPadding, whiteBorderWrapper } from '@/lib/utils'
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import { AutolivLogo, CoopLogistikLogo, KlarnaLogo, SkandiaLogo, VolvoLogo } from './company-logos'
+import { AutolivLogo, CoopLogistikLogo, KlarnaLogo, SkandiaLogo } from './company-logos'
 import { HeroHeader } from './header'
 
 export default function HeroSection() {
@@ -79,9 +79,9 @@ export default function HeroSection() {
                     <div className="flex items-center justify-center">
                       <CoopLogistikLogo className="text-white" />
                     </div>
-                    <div className="flex items-center justify-center">
-                      <VolvoLogo className="text-white" />
-                    </div>
+                    {/* <div className="flex items-center justify-center">
+                      <VolvoLogo className="text-white" /> 
+                    </div>*/}
                     <div className="flex items-center justify-center">
                       <KlarnaLogo className="text-white" />
                     </div>
