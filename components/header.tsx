@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { cn, horizontalPadding, whiteBorderOpacity } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const menuItems = [
   { name: 'Månadens Rookie', href: '/manadens-rookie' },
@@ -156,7 +156,7 @@ export const HeroHeader = () => {
                     className="text-white/80 underline-offset-4 shadow-none hover:text-white hover:underline"
                   >
                     <Link href="https://rookie-se.on.intelliplan.eu/">
-                      <span>Login</span>
+                      <span>Logga in</span>
                     </Link>
                   </Button>
                   <Button asChild variant="outline" size="sm">
@@ -180,7 +180,7 @@ export const HeroHeader = () => {
                     className="text-white/80 shadow-none hover:text-white"
                   >
                     <Link href="https://rookie-se.on.intelliplan.eu/">
-                      <span>Login</span>
+                      <span>Logga in</span>
                     </Link>
                   </Button>
                   <Button asChild variant="outline" size="sm">
