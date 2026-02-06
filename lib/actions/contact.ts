@@ -1,5 +1,6 @@
 'use server'
 
+import crypto from 'crypto'
 import { z } from 'zod'
 
 const contactFormSchema = z.object({
@@ -50,7 +51,8 @@ export interface ContactFormData {
 }
 
 /**
- * Server Action to submit contact form data to WEHOOK_URL.
+ * Server Action to submit contact form data to WEBHOOK_URL.
+ * Includes HMAC-SHA256 signature for webhook authentication.
  */
 export async function submitContactAction(
   formData: ContactFormData
@@ -67,6 +69,7 @@ export async function submitContactAction(
     const validatedData = validationResult.data
 
     const webhookUrl = process.env.WEBHOOK_URL
+    const webhookSecret = process.env.WEBHOOK_SECRET
 
     if (!webhookUrl) {
       console.error('WEBHOOK_URL is not configured')
@@ -75,12 +78,23 @@ export async function submitContactAction(
 
     console.log('Submitting to webhook:', { webhookUrl })
 
+    // Serialize the body once for both signature and request
+    const body = JSON.stringify(validatedData)
+
+    // Generate HMAC-SHA256 signature if secret is configured
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    }
+
+    if (webhookSecret) {
+      const signature = crypto.createHmac('sha256', webhookSecret).update(body).digest('hex')
+      headers['x-webhook-signature'] = signature
+    }
+
     const response = await fetch(webhookUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(validatedData),
+      headers,
+      body,
     })
 
     const responseText = await response.text()
