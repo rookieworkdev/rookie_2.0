@@ -3,6 +3,66 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
   public: {
     Tables: {
+      companies: {
+        Row: {
+          id: string
+          name: string
+          org_number: string | null
+          domain: string | null
+          employee_count: number | null
+          industry: string | null
+          region: string | null
+          current_score: number | null
+          status: string | null
+          created_at: string | null
+          updated_at: string | null
+          phone: string | null
+          website: string | null
+          ai_reasoning: string | null
+          enrichment_needed: Json | null
+          source: string[] | null
+          company_description: string | null
+        }
+        Insert: {
+          id?: string
+          name: string
+          org_number?: string | null
+          domain?: string | null
+          employee_count?: number | null
+          industry?: string | null
+          region?: string | null
+          current_score?: number | null
+          status?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+          phone?: string | null
+          website?: string | null
+          ai_reasoning?: string | null
+          enrichment_needed?: Json | null
+          source?: string[] | null
+          company_description?: string | null
+        }
+        Update: {
+          id?: string
+          name?: string
+          org_number?: string | null
+          domain?: string | null
+          employee_count?: number | null
+          industry?: string | null
+          region?: string | null
+          current_score?: number | null
+          status?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+          phone?: string | null
+          website?: string | null
+          ai_reasoning?: string | null
+          enrichment_needed?: Json | null
+          source?: string[] | null
+          company_description?: string | null
+        }
+        Relationships: []
+      }
       website_inspiration: {
         Row: {
           author: string
@@ -48,47 +108,103 @@ export type Database = {
         }
         Relationships: []
       }
-      website_jobs: {
+      job_ads: {
         Row: {
-          category: string
-          company: string
+          ai_category: string | null
+          ai_reasoning: string | null
+          ai_score: number | null
+          ai_valid: boolean | null
+          ai_experience: string | null
+          application_email: string | null
+          category: string | null
+          company_id: string | null
           created_at: string | null
-          description: string
-          external_url: string
+          description: string | null
+          duration: string | null
+          external_id: string
+          external_url: string | null
           id: string
           is_active: boolean | null
-          location: string
-          posted_date: string
+          is_ai_generated: boolean | null
+          job_type: string | null
+          location: string | null
+          posted_date: string | null
+          published_status: string | null
+          raw_data: Json | null
+          salary: string | null
+          scraped_at: string | null
+          service_type: string | null
+          source: string
           title: string
           updated_at: string | null
         }
         Insert: {
-          category: string
-          company: string
+          ai_category?: string | null
+          ai_reasoning?: string | null
+          ai_score?: number | null
+          ai_valid?: boolean | null
+          ai_experience?: string | null
+          application_email?: string | null
+          category?: string | null
+          company_id?: string | null
           created_at?: string | null
-          description: string
-          external_url: string
+          description?: string | null
+          duration?: string | null
+          external_id: string
+          external_url?: string | null
           id?: string
           is_active?: boolean | null
-          location: string
-          posted_date: string
+          is_ai_generated?: boolean | null
+          job_type?: string | null
+          location?: string | null
+          posted_date?: string | null
+          published_status?: string | null
+          raw_data?: Json | null
+          salary?: string | null
+          scraped_at?: string | null
+          service_type?: string | null
+          source: string
           title: string
           updated_at?: string | null
         }
         Update: {
-          category?: string
-          company?: string
+          ai_category?: string | null
+          ai_reasoning?: string | null
+          ai_score?: number | null
+          ai_valid?: boolean | null
+          ai_experience?: string | null
+          application_email?: string | null
+          category?: string | null
+          company_id?: string | null
           created_at?: string | null
-          description?: string
-          external_url?: string
+          description?: string | null
+          duration?: string | null
+          external_id?: string
+          external_url?: string | null
           id?: string
           is_active?: boolean | null
-          location?: string
-          posted_date?: string
+          is_ai_generated?: boolean | null
+          job_type?: string | null
+          location?: string | null
+          posted_date?: string | null
+          published_status?: string | null
+          raw_data?: Json | null
+          salary?: string | null
+          scraped_at?: string | null
+          service_type?: string | null
+          source?: string
           title?: string
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "job_ads_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       website_rookies: {
         Row: {
@@ -149,6 +265,6 @@ export type Database = {
 }
 
 // Convenience types for the website tables
-export type WebsiteJob = Database['public']['Tables']['website_jobs']['Row']
+export type JobAd = Database['public']['Tables']['job_ads']['Row']
 export type WebsiteRookie = Database['public']['Tables']['website_rookies']['Row']
 export type WebsiteInspiration = Database['public']['Tables']['website_inspiration']['Row']

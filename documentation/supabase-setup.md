@@ -81,7 +81,7 @@ Database mutations use Server Actions:
 export async function updateJobStatus(jobId: string, isActive: boolean) {
   const supabase = createServerClient()
   const { error } = await supabase
-    .from('website_jobs')
+    .from('job_ads')
     .update({ is_active: isActive })
     .eq('id', jobId)
   return { success: !error }
@@ -133,10 +133,11 @@ revalidatePath('/lediga-jobb')
 
 ## Database Tables
 
-### website_jobs
+### job_ads
 - Active job listings
 - Filtered by `is_active = true`
 - Ordered by `posted_date DESC`
+- Company name accessed via JOIN on `company_id` → `companies.name`
 
 ### website_inspiration
 - Blog posts and inspiration content
@@ -153,27 +154,26 @@ revalidatePath('/lediga-jobb')
 All data fetching functions include transformation layers to convert database schemas to application-friendly interfaces:
 
 ```typescript
-// Database type (snake_case)
-type WebsiteJob = {
-  id: string
-  external_url: string
-  posted_date: string
-  // ...
+// Database type (snake_case) with joined company
+type JobAdWithCompany = JobAd & {
+  companies: { name: string } | null
 }
 
 // Application type (camelCase)
 type Job = {
   id: string
+  company: string
   externalUrl: string
   postedDate: string
   // ...
 }
 
-function transformJob(row: WebsiteJob): Job {
+function transformJob(row: JobAdWithCompany): Job {
   return {
     id: row.id,
-    externalUrl: row.external_url,
-    postedDate: row.posted_date,
+    company: row.companies?.name ?? '',
+    externalUrl: row.external_url ?? '',
+    postedDate: row.posted_date ?? '',
   }
 }
 ```
@@ -205,8 +205,8 @@ export async function getAvailableJobs(): Promise<Job[]> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('website_jobs')
-    .select('*')
+    .from('job_ads')
+    .select('*, companies(name)')
     .eq('is_active', true)
     .order('posted_date', { ascending: false })
 
