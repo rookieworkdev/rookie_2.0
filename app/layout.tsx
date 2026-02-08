@@ -28,7 +28,6 @@ const inter = localFont({
   display: 'swap',
 })
 
-
 export const metadata: Metadata = {
   metadataBase,
   title: {
@@ -85,11 +84,8 @@ export default function RootLayout({
   return (
     <html lang="sv" className={inter.variable} suppressHydrationWarning>
       <body className="antialiased">
-        <Script
-          src="https://app.huddlekit.com/sdk/huddlekit.js"
-          data-project-key="pk_live_3dk-sraFAKH3q8rR2Abr"
-          strategy="beforeInteractive"
-        />
+        <div dangerouslySetInnerHTML={{ __html: '<ruttl-poetry id="kxfjlfuU4K9oL9qnPhNW"></ruttl-poetry>' }} />
+        <Script src="https://web.ruttl.com/poetry.js" strategy="beforeInteractive" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <ThemeProvider
           attribute="class"
