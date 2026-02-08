@@ -84,8 +84,10 @@ export default function RootLayout({
   return (
     <html lang="sv" className={inter.variable} suppressHydrationWarning>
       <body className="antialiased">
-        <div dangerouslySetInnerHTML={{ __html: '<ruttl-poetry id="kxfjlfuU4K9oL9qnPhNW"></ruttl-poetry>' }} />
-        <Script src="https://web.ruttl.com/poetry.js" strategy="beforeInteractive" />
+        <Script
+          src="https://app.huddlekit.com/sdk/huddlekit.js"
+          data-project-key="pk_live_ffTqVzzMFzvshLbY_Sxd"
+        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <ThemeProvider
           attribute="class"
