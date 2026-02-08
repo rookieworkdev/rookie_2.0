@@ -84,10 +84,13 @@ export default function RootLayout({
   return (
     <html lang="sv" className={inter.variable} suppressHydrationWarning>
       <body className="antialiased">
-        <Script
-          src="https://app.huddlekit.com/sdk/huddlekit.js"
-          data-project-key="pk_live_ffTqVzzMFzvshLbY_Sxd"
-        />
+        <Script id="feedbucket" strategy="afterInteractive">
+          {`(function(k) {
+            let s=document.createElement('script');s.defer=true;
+            s.src="https://cdn.feedbucket.app/assets/feedbucket.js";
+            s.dataset.feedbucket=k;document.head.appendChild(s);
+          })('7Yqb2KV4eXK3L0QJmnMh')`}
+        </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <ThemeProvider
           attribute="class"
