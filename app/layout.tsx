@@ -10,6 +10,7 @@ import {
 } from '@/lib/seo'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import Script from 'next/script'
 import './globals.css'
 
 // Local Inter font for better performance (no external requests)
@@ -84,6 +85,11 @@ export default function RootLayout({
   return (
     <html lang="sv" className={inter.variable} suppressHydrationWarning>
       <body className="antialiased">
+        <Script
+          src="https://app.huddlekit.com/sdk/huddlekit.js"
+          data-project-key="pk_live_3dk-sraFAKH3q8rR2Abr"
+          strategy="beforeInteractive"
+        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <ThemeProvider
           attribute="class"
