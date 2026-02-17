@@ -108,7 +108,7 @@ export type Database = {
         }
         Relationships: []
       }
-      job_ads: {
+      jobs: {
         Row: {
           ai_category: string | null
           ai_reasoning: string | null
@@ -198,7 +198,7 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "job_ads_company_id_fkey"
+            foreignKeyName: "jobs_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
@@ -265,6 +265,6 @@ export type Database = {
 }
 
 // Convenience types for the website tables
-export type JobAd = Database['public']['Tables']['job_ads']['Row']
+export type JobAd = Database['public']['Tables']['jobs']['Row']
 export type WebsiteRookie = Database['public']['Tables']['website_rookies']['Row']
 export type WebsiteInspiration = Database['public']['Tables']['website_inspiration']['Row']

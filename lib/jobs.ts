@@ -35,7 +35,7 @@ export async function getAvailableJobs(): Promise<Job[]> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('job_ads')
+    .from('jobs')
     .select('*, companies(name)')
     .eq('is_active', true)
     .order('posted_date', { ascending: false })
@@ -52,7 +52,7 @@ export async function getJobById(id: string): Promise<Job | null> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('job_ads')
+    .from('jobs')
     .select('*, companies(name)')
     .eq('id', id)
     .eq('is_active', true)
@@ -70,7 +70,7 @@ export async function getJobsByCategory(category: string): Promise<Job[]> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('job_ads')
+    .from('jobs')
     .select('*, companies(name)')
     .eq('category', category)
     .eq('is_active', true)
@@ -88,7 +88,7 @@ export async function getJobsByLocation(location: string): Promise<Job[]> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('job_ads')
+    .from('jobs')
     .select('*, companies(name)')
     .eq('location', location)
     .eq('is_active', true)
@@ -107,7 +107,7 @@ export async function getJobCategories(): Promise<string[]> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('job_ads')
+    .from('jobs')
     .select('category')
     .eq('is_active', true)
 
@@ -125,7 +125,7 @@ export async function getJobLocations(): Promise<string[]> {
   const supabase = createServerClient()
   
   const { data, error } = await supabase
-    .from('job_ads')
+    .from('jobs')
     .select('location')
     .eq('is_active', true)
 
